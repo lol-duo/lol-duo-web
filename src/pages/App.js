@@ -1,10 +1,10 @@
 import "./App.css";
-import Frame_2609349 from "../frame/frame_2609349";
+import Home from "../components/templates/home/Home";
 
 function App() {
   return (
     <>
-      <Frame_2609349 />
+      <Home />
       <body></body>
       <footer></footer>
     </>
