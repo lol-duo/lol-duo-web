@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { LightLogo, LightName } from "../../atoms/logo/Logo";
+import { LightLogo, LightName } from "../atoms/Logo";
 
 const bundle = {
   lightLogoBundle: css({
@@ -12,7 +12,7 @@ const bundle = {
 
 export function LightLogoBundle() {
   return (
-    <div className={bundle.lightLogoBundle}>
+    <div css={bundle.lightLogoBundle}>
       <LightLogo />
       <LightName />
     </div>
