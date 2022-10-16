@@ -1,12 +1,22 @@
-import LightLogoBundle from "../../moecules/logo/LightLogoBundle";
-import Style from "./Style.module.css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { LightLogoBundle } from "../../moecules/logo/LightLogoBundle";
 
-function GNB_Logo() {
+const gnb = {
+  logo: css({
+    height: "72px",
+    width: "1080px",
+    left: "20px",
+    top: "20px",
+    borderRadius: "0px",
+    padding: "20px 60px 20px 60px",
+  }),
+};
+
+export function GNB_Logo() {
   return (
-    <div className={Style.logo}>
+    <div className={gnb.logo}>
       <LightLogoBundle />
     </div>
   );
 }
-
-export default GNB_Logo;

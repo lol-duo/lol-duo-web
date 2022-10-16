@@ -1,7 +1,5 @@
-import GNB_Logo from "../../organisms/GNB/GNB_Logo";
+import { GNB_Logo } from "../../organisms/GNB/GNB_Logo";
 
-function Home() {
+export function Home() {
   return <GNB_Logo />;
 }
-
-export default Home;

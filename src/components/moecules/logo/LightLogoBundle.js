@@ -1,14 +1,20 @@
-import Style from "./Style.module.css";
-import LightLogo from "../../atoms/logo/LightLogo";
-import LightName from "../../atoms/logo/LightName";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { LightLogo, LightName } from "../../atoms/logo/Logo";
 
-function LightLogoBundle() {
+const bundle = {
+  lightLogoBundle: css({
+    width: "164.8px",
+    height: "32px",
+    position: "relative",
+  }),
+};
+
+export function LightLogoBundle() {
   return (
-    <div className={Style.LightLogo}>
+    <div className={bundle.lightLogoBundle}>
       <LightLogo />
       <LightName />
     </div>
   );
 }
-
-export default LightLogoBundle;

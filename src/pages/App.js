@@ -1,5 +1,5 @@
+import { Home } from "../components/templates/home/Home";
 import "./App.css";
-import Home from "../components/templates/home/Home";
 
 function App() {
   return (
