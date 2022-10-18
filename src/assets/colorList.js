@@ -7,6 +7,7 @@ const colorList = {
     semantic: {
         card: "#2F2F2F",
         background: "#212121",
+        hover: "#424242",
     },
     secondary: {
         beige: "#C8AA6E",

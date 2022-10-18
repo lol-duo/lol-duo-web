@@ -11,6 +11,9 @@ const tbody = {
 const tr = {
     solo: css({
         background: colorList.semantic.card,
+        ":hover": {
+            background: colorList.semantic.hover,
+        }
     }),
 }
 
