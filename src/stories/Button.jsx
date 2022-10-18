@@ -25,7 +25,7 @@ Button.propTypes = {
    */
   primary: PropTypes.bool,
   /**
-   * What background color to use
+   * What background colorList to use
    */
   backgroundColor: PropTypes.string,
   /**

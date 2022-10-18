@@ -1,7 +1,7 @@
-import { Home } from "../components/templates/home/Home";
+import {MainPage} from "../components/templates/Page";
 
 function App() {
-  return <Home></Home>;
+    return <MainPage></MainPage>;
 }
 
 export default App;
