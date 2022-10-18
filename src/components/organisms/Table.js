@@ -5,14 +5,14 @@ import {SoloTbody} from "../moecules/Tbody";
 
 const table = {
     solo: css({
-        position: "absolute",
+        position: "relative",
         left: "201px",
         top: "278px",
+        height: "100%",
 
         width: "676px",
         borderCollapse: "separate",
         borderSpacing: "0px 4px",
-        overflow: "hidden",
     }),
 }
 

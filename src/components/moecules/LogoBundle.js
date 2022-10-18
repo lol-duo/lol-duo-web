@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
-import {LightLogo, LightName} from "../atoms/Logo";
+import {DarkLogo, LightLogo, LightName} from "../atoms/Logo";
 
 const bundle = {
     lightLogoBundle: css({
@@ -9,7 +9,20 @@ const bundle = {
         position: "relative",
         top: "25%",
     }),
+    darkLogoBundle: css({
+        width: "164.8px",
+        height: "32px",
+    }),
 };
+
+export function DarkLogoBundle() {
+    return (
+        <div css={bundle.darkLogoBundle}>
+            <DarkLogo/>
+            <LightName/>
+        </div>
+    );
+}
 
 export function LightLogoBundle() {
     return (

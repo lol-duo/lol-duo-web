@@ -8,6 +8,10 @@ import colorList from "../../assets/colorList";
 const body = {
     main: css({
         color: colorList.semantic.background,
+        minWidth: "1080px",
+        display: "block",
+        overflow: "auto",
+        minHeight: "max-content",
     }),
 }
 
