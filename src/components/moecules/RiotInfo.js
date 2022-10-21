@@ -6,6 +6,7 @@ import {DarkLogoBundle} from "./LogoBundle";
 const riot = {
     info: css({
         position: "absolute",
+        
     }),
 }
 

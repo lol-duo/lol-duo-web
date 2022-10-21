@@ -1,45 +1,48 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
 
-const logo = {
-    logo: css({
-        height: "32px",
-        width: "32px",
-    }),
-
-    name: css({
-        height: "27.2px",
-        width: "125.12px",
-        position: "absolute",
-        top: "1.6px",
-        left: "38.4px",
-    }),
-};
-
-export function DarkLogo() {
+export function DarkLogo({newCss = {}}) {
     return (
         <img
-            css={logo.logo}
+            css={
+                css({
+                    height: "32px",
+                    width: "32px",
+                    ...newCss
+                })
+            }
             src="https://d2d4ci5rabfoyr.cloudfront.net/logo/Group_Gray.svg"
             alt="https://d2d4ci5rabfoyr.cloudfront.net/logo/Group_Gray.svg"
         />
     );
 }
 
-export function LightLogo() {
+export function LightLogo({newCss = {}}) {
     return (
         <img
-            css={logo.logo}
+            css={
+                css({
+                    height: "32px",
+                    width: "32px",
+                    ...newCss
+                })
+            }
             src="https://d2d4ci5rabfoyr.cloudfront.net/logo/Group.svg"
             alt="https://d2d4ci5rabfoyr.cloudfront.net/logo/Group.svg"
         />
     );
 }
 
-export function LightName() {
+export function LightName({newCss = {}}) {
     return (
         <img
-            css={logo.name}
+            css={
+                css({
+                    height: "27.2px",
+                    width: "125.12px",
+                    ...newCss
+                })
+            }
             src="https://d2d4ci5rabfoyr.cloudfront.net/logo/Frame.svg"
             alt="https://d2d4ci5rabfoyr.cloudfront.net/logo/Frame.svg"
         />

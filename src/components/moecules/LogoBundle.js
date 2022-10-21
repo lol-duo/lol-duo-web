@@ -3,32 +3,42 @@ import {css} from "@emotion/react";
 import {DarkLogo, LightLogo, LightName} from "../atoms/Logo";
 
 const bundle = {
-    lightLogoBundle: css({
-        width: "164.8px",
-        height: "32px",
-        position: "relative",
-        top: "25%",
-    }),
-    darkLogoBundle: css({
-        width: "164.8px",
-        height: "32px",
-    }),
+    darkLogo: {
+        position: "absolute",
+        top: "1.6px",
+        left: "38.4px",
+    },
 };
 
-export function DarkLogoBundle() {
+
+export function DarkLogoBundle({newCss = {}}) {
     return (
-        <div css={bundle.darkLogoBundle}>
+        <div css={
+            css({
+                width: "164.8px",
+                height: "32px",
+                ...newCss
+            })
+        }>
             <DarkLogo/>
-            <LightName/>
+            <LightName newCss={bundle.darkLogo}/>
         </div>
     );
 }
 
-export function LightLogoBundle() {
+export function LightLogoBundle({newCss = {}}) {
     return (
-        <div css={bundle.lightLogoBundle}>
+        <div css={
+            css({
+                width: "164.8px",
+                height: "32px",
+                position: "relative",
+                top: "25%",
+                ...newCss
+            })
+        }>
             <LightLogo/>
-            <LightName/>
+            <LightName newCss={bundle.darkLogo}/>
         </div>
     );
 }

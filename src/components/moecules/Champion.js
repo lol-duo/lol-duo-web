@@ -11,16 +11,24 @@ const champion = {
         width: '70px',
     }),
 
-    champion: css({
+    champion: {
         left: "22px",
         top: "0px",
-        borderRadius: "50%",
-    }),
-    rune: css({}),
+
+    },
+    rune: {
+        left: "0px",
+        top: "13px",
+    },
+    line: {
+        left: "50px",
+        top: "26px",
+    },
     name: css({
         position: "absolute",
         left: "94px",
         top: "16px",
+
         ...fontList.roboto.bold["12"],
         color: colorList.grayscale["000"],
         whiteSpace: "nowrap",
@@ -29,9 +37,9 @@ const champion = {
 
 export function SoloChampion({championInfo}) {
     return <div css={champion.solo}>
-        <SoloChampionImage css={champion.champion} src={championInfo.champion}/>
-        <RuneImage src={championInfo.rune}/>
-        <LineImage src={championInfo.line}/>
+        <SoloChampionImage newCss={champion.champion} src={championInfo.champion}/>
+        <RuneImage newCss={champion.rune} src={championInfo.rune}/>
+        <LineImage newCss={champion.line} src={championInfo.line}/>
         <div css={champion.name}>{championInfo.name}</div>
     </div>;
 }

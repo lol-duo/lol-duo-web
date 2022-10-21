@@ -7,6 +7,7 @@ const text = {
     riot: css({
         ...fontList.roboto.regular["11"],
         color: colorList.grayscale["200"],
+        position: "absolute",
         width: "579px",
         height: "64px",
         top: "40px",
