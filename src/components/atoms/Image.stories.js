@@ -11,7 +11,7 @@ export default {
 
 export const StorySoloChampionImage = SoloChampionTemplate.bind({});
 StorySoloChampionImage.args = {
-    src: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg"
+    src: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
 }
 
 export const StoryRuneImage = RuneTemplate.bind({});
