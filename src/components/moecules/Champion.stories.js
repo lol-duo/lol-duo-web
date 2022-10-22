@@ -12,7 +12,7 @@ export const Solo = SoloChampionTemplate.bind({});
 Solo.args = {
     championInfo: {
         champion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
-        rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
+        rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
         line: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
         name: "람머스"
     }

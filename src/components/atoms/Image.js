@@ -21,7 +21,7 @@ export function RuneImage({src, newCss = {}}) {
             width: '20px',
             ...newCss
         })
-    } src={src} alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg"/>;
+    } src={src} alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg"/>;
 }
 
 export function LineImage({src, newCss = {}}) {
