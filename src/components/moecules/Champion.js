@@ -1,45 +1,54 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
 import {LineImage, RuneImage, SoloChampionImage} from "../atoms/Image";
-import fontList from "../../assets/fontList";
-import colorList from "../../assets/colorList";
+import {SoloChampionText} from "../atoms/Text";
 
 const champion = {
-    solo: css({
-        position: "relative",
-        height: '46px',
-        width: '70px',
-    }),
-
     champion: {
+        position: "absolute",
         left: "22px",
         top: "0px",
-
     },
     rune: {
+        position: "absolute",
         left: "0px",
         top: "13px",
     },
     line: {
+        position: "absolute",
         left: "50px",
         top: "26px",
     },
-    name: css({
+    name: {
         position: "absolute",
         left: "94px",
         top: "16px",
-
-        ...fontList.roboto.bold["12"],
-        color: colorList.grayscale["000"],
-        whiteSpace: "nowrap",
-    }),
+    }
 }
 
-export function SoloChampion({championInfo}) {
-    return <div css={champion.solo}>
+export function Champion({championInfo, newCss = {}}) {
+    return <div css={css({
+        height: '46px',
+        width: '70px',
+        ...newCss
+    })}>
         <SoloChampionImage newCss={champion.champion} src={championInfo.champion}/>
         <RuneImage newCss={champion.rune} src={championInfo.rune}/>
         <LineImage newCss={champion.line} src={championInfo.line}/>
-        <div css={champion.name}>{championInfo.name}</div>
     </div>;
+}
+
+export function SoloChampion({children, name, newCss = {}}) {
+    return (
+        <td css={
+            css({
+                width: "176px",
+                height: "46px",
+                ...newCss
+            })
+        }>
+            {children}
+            <SoloChampionText newCss={champion.name}>{name}</SoloChampionText>
+        </td>
+    )
 }
