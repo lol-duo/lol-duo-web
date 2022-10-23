@@ -1,39 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
-import {SoloThead} from "../moecules/Thead";
+import {ColGroup, SoloThead} from "../moecules/Thead";
 import {SoloTbody} from "../moecules/Tbody";
 
-const table = {
-    solo: css({
-        position: "relative",
-        left: "201px",
-        top: "278px",
-        height: "100%",
 
-        width: "676px",
-        borderCollapse: "separate",
-        borderSpacing: "0px 4px",
-    }),
-}
-
-function createColGroup({list}) {
+export function SoloTable({tableInfo, newCss = {}}) {
     return (
-        <colgroup>
-            {
-                list.map((width) => {
-                    return <col width={width}/>
-                })
-            }
-        </colgroup>
-    )
-}
+        <table css={css({
+            position: "relative",
+            left: "50%",
+            top: "172px",
+            transform: "translateX(-50%)",
 
-export function SoloTable({tableInfo}) {
-    return (
-        <table css={table.solo}>
-            {createColGroup({list: ["150px", "238px", "288px"]})}
+            width: "676px",
+            borderCollapse: "separate",
+            borderSpacing: "0px 4px",
+            ...newCss
+        })}>
+            <ColGroup>{tableInfo.colgroup}</ColGroup>
             <SoloThead>{tableInfo.header}</SoloThead>
-            <SoloTbody bodyInfo={tableInfo.body}/>
+            <SoloTbody bodyInfo={tableInfo.bodyInfo}/>
         </table>
     )
 }

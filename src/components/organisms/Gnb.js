@@ -6,8 +6,8 @@ import {NavUl} from "../moecules/Ul";
 
 const gnb = {
     logo: {
-        position: "absolute",
-        left: "60px",
+        position: "relative",
+        left: "0px",
         top: "12px",
     }
 };

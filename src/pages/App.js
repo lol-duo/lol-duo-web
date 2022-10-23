@@ -1,7 +1,8 @@
-import {MainPage} from "../components/templates/Page";
+import {SoloMainPage} from "../components/templates/Page";
+
 
 function App() {
-    return <MainPage></MainPage>;
+    return <SoloMainPage></SoloMainPage>;
 }
 
 export default App;
