@@ -7,10 +7,7 @@ import {SoloTbody} from "../moecules/Tbody";
 export function SoloTable({tableInfo, newCss = {}}) {
     return (
         <table css={css({
-            position: "relative",
-            left: "50%",
-            top: "172px",
-            transform: "translateX(-50%)",
+
 
             width: "676px",
             borderCollapse: "separate",

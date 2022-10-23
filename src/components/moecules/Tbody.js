@@ -12,7 +12,9 @@ const soloTbody = {
 
 export function SoloTbody({bodyInfo, newCss = {}}) {
     return (
-        <tbody>
+        <tbody css={css({
+            position: "relative",
+        })}>
         {bodyInfo ? bodyInfo.map((body) => {
             let champInfo = {
                 line: body.positionImgUrl,

@@ -19,14 +19,16 @@ export const StorySoloTdChampion = SoloTdChampionTemplate.bind({});
 StorySoloTdChampion.args = {
     children: <Champion championInfo={
         {
-            championInfo: {
-                champion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
-                rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
-                line: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
-            }
+
+            champion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
+            rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
+            line: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
+
         }
     }/>
 }
 
 export const StorySoloTdRate = SoloTdRateTemplate.bind({});
-StorySoloTdRate.args = {}
+StorySoloTdRate.args = {
+    children: "50.00%"
+}
