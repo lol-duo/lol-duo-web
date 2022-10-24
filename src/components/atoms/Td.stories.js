@@ -1,10 +1,9 @@
 import React from "react";
-import {SoloTdChampion, SoloTdRank, SoloTdRate} from "./Td";
-import {Champion} from "../moecules/Champion";
+import {DuoTdRank, SoloTdRank, SoloTdRate} from "./Td";
 
 const SoloTdRankTemplate = (args) => <SoloTdRank {...args} />
-const SoloTdChampionTemplate = (args) => <SoloTdChampion {...args} />
 const SoloTdRateTemplate = (args) => <SoloTdRate {...args} />
+const DuoTdRankTemplate = (args) => <DuoTdRank {...args} />
 
 export default {
     title: "Td",
@@ -15,20 +14,12 @@ StorySoloTdRank.args = {
     children: "1"
 }
 
-export const StorySoloTdChampion = SoloTdChampionTemplate.bind({});
-StorySoloTdChampion.args = {
-    children: <Champion championInfo={
-        {
-
-            champion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
-            rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
-            line: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
-
-        }
-    }/>
-}
-
 export const StorySoloTdRate = SoloTdRateTemplate.bind({});
 StorySoloTdRate.args = {
     children: "50.00%"
+}
+
+export const StoryDuoTdRank = DuoTdRankTemplate.bind({});
+StoryDuoTdRank.args = {
+    rank: 4,
 }

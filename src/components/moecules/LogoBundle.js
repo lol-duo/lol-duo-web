@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
-import {DarkLogo, LightLogo, LightName} from "../atoms/Logo";
+import {DarkLogo, LightLogo, LightName} from "../atoms/StaticImage";
 
 const bundle = {
     name: {

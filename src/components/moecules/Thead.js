@@ -3,7 +3,7 @@ import {css} from "@emotion/react";
 import {TextTh} from "../atoms/Th";
 import colorList from "../../assets/colorList";
 
-export function SoloThead({children, newCss = {}}) {
+export function MainThead({children, newCss = {}}) {
     return (
         <thead css={css({
             background: colorList.semantic.card,

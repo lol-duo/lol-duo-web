@@ -1,8 +1,7 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
-import {SoloMainPage} from "../components/templates/Page";
 import {MainHeader} from "../components/templates/Header";
-import {SoloMainBody} from "../components/templates/Body";
+import {DuoMainBody, SoloMainBody} from "../components/templates/Body";
 import {MainFooter} from "../components/templates/Footer";
 
 const mainPage = {
@@ -21,8 +20,8 @@ function App() {
             <MainHeader/>
             <Routes>
                 <Route path="/" element={<Navigate to="/duo"/>}/>
-                <Route path="/duo" element={<SoloMainBody newCss={mainPage.body}/>}/>
-                <Route path="/text" element={<SoloMainPage/>}/>
+                <Route path="/solo" element={<SoloMainBody newCss={mainPage.body}/>}/>
+                <Route path="/duo" element={<DuoMainBody newCss={mainPage.body}/>}/>
             </Routes>
             <MainFooter newCss={mainPage.footer}></MainFooter>
         </div>

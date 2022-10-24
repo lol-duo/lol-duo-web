@@ -1,9 +1,18 @@
 /** @jsxImportSource @emotion/react */
+/** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
-import {SoloTable} from "../organisms/Table";
+import {DuoTable, SoloTable} from "../organisms/Table";
 import colorList from "../../assets/colorList";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
+
+const duoMainBody = {
+    table: {
+        position: "relative",
+        left: "50%",
+        transform: "translateX(-50%)",
+    }
+}
 
 const soloMainBody = {
     table: {
@@ -11,6 +20,62 @@ const soloMainBody = {
         left: "50%",
         transform: "translateX(-50%)",
     }
+}
+
+export function DuoMainBody({newCss = {}}) {
+
+    const [duoChampionListResult, setDuoChampionListResult] = useState([
+        {
+            id: 4931,
+            rankChangeImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/rankChange/RankSame.svg",
+            rankChangeNumber: "",
+            rankChangeColor: "",
+            rankNumber: 1,
+            rankNumberIcon: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/rankChangeIcon.svg",
+            rankNumberColor: "C8AA6E",
+            champion1: {
+                championName: "미스 포츈",
+                championImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/MissFortune.svg",
+                mainRuneImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/PressTheAttack.svg",
+                positionImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/BOTTOM.svg",
+            },
+            champion2: {
+                championName: "케인",
+                championImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Kayn.svg",
+                mainRuneImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
+                positionImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/JUNGLE.svg",
+            },
+            listImage: "",
+            winRate: "68.53%"
+        }]);
+
+
+    const setDuoChampionListResultByApi = useCallback(async () => {
+        const apiData = await axios.get(
+            "https://api.lolduo.net/v2/doubleInfo?championId=0&championId2=0&position=ALL&position2=ALL"
+        );
+        setDuoChampionListResult(apiData.data);
+        console.log(apiData.data);
+    }, []);
+
+    useEffect(() => {
+        setDuoChampionListResultByApi().then(r => console.log(r));
+    }, [setDuoChampionListResultByApi]);
+
+    const tableInfo = {
+        header: ["Rank"],
+        colgroup: ["676px"],
+        bodyInfo: duoChampionListResult,
+    }
+
+    return (
+        <div css={css({
+            color: colorList.semantic.background,
+            ...newCss
+        })}>
+            <DuoTable newCss={duoMainBody.table} tableInfo={tableInfo}/>
+        </div>
+    )
 }
 
 export function SoloMainBody({newCss = {}}) {
@@ -45,6 +110,7 @@ export function SoloMainBody({newCss = {}}) {
 
     const tableInfo = {
         header: ["Rank", "Champion", "Win Rate"],
+        colgroup: ["150px", "238px", "288px"],
         bodyInfo: championListResult,
     }
 

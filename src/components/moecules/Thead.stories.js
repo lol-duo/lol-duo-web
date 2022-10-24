@@ -1,11 +1,11 @@
 import React from 'react';
-import {SoloThead} from "./Thead";
+import {MainThead} from "./Thead";
 
 export default {
     title: "Thead",
 }
 
-const SoloTheadTemplate = (args) => <SoloThead {...args}/>
+const SoloTheadTemplate = (args) => <MainThead {...args}/>
 
 export const StorySoloThead = SoloTheadTemplate.bind({});
 StorySoloThead.args = {

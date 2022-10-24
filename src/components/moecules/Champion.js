@@ -19,10 +19,15 @@ const champion = {
         left: "50px",
         top: "26px",
     },
-    name: {
+    soloName: {
         position: "absolute",
         left: "94px",
         top: "16px",
+    },
+    duoName: {
+        position: "relative",
+        textAlign: "center",
+        top: "2px",
     }
 }
 
@@ -30,25 +35,43 @@ export function Champion({championInfo, newCss = {}}) {
     return <div css={css({
         height: '46px',
         width: '70px',
+        position: 'relative',
         ...newCss
     })}>
-        <SoloChampionImage newCss={champion.champion} src={championInfo.champion}/>
-        <RuneImage newCss={champion.rune} src={championInfo.rune}/>
-        <LineImage newCss={champion.line} src={championInfo.line}/>
+        <SoloChampionImage newCss={champion.champion} src={championInfo.championImgUrl}/>
+        <RuneImage newCss={champion.rune} src={championInfo.mainRuneImgUrl}/>
+        <LineImage newCss={champion.line} src={championInfo.positionImgUrl}/>
     </div>;
 }
 
-export function SoloChampion({children, name, newCss = {}}) {
+export function SoloChampion({championInfo, name, newCss = {}}) {
     return (
         <td css={
             css({
                 width: "176px",
                 height: "46px",
+                position: "relative",
                 ...newCss
             })
         }>
-            {children}
-            <SoloChampionText newCss={champion.name}>{name}</SoloChampionText>
+            <Champion championInfo={championInfo}/>
+            <SoloChampionText newCss={champion.soloName}>{name}</SoloChampionText>
+        </td>
+    )
+}
+
+export function DuoChampion({championInfo, newCss = {}}) {
+    return (
+        <td css={
+            css({
+                width: "71px",
+                height: "62px",
+                justifyContent: "center",
+                ...newCss
+            })
+        }>
+            <Champion championInfo={championInfo}/>
+            <SoloChampionText newCss={champion.duoName}>{championInfo.championName}</SoloChampionText>
         </td>
     )
 }
