@@ -33,7 +33,7 @@ export function SoloMainBody({newCss = {}}) {
 
     const setChampionListResultByApi = useCallback(async () => {
         const apiData = await axios.get(
-            "https://api.lolduo.net/v2/getSoloInfo?championId=0&position=ALL"
+            "https://api.lolduo.net/v2/soloInfo?championId=0&position=ALL"
         );
         setChampionListResult(apiData.data);
         console.log(apiData.data);
