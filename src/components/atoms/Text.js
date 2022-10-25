@@ -3,6 +3,35 @@ import {css} from "@emotion/react";
 import fontList from "../../assets/fontList";
 import colorList from "../../assets/colorList";
 
+export function SelectedText({text, newCss = {}}) {
+    return (<div css={css({
+        ...fontList.roboto.medium["16"],
+        color: colorList.grayscale["000"],
+        ...newCss
+    })}>{text}</div>)
+}
+
+export function SelectText({newCss = {}, text}) {
+    return (
+        <div css={
+            css({
+                display: "flex",
+                ...newCss
+            })
+        }>
+            <div css={css({
+                ...fontList.roboto.regular[14],
+                color: colorList.grayscale["100"],
+            })}>{text}</div>
+            <img css={css({
+                position: "relative",
+                left: "4px",
+            })} src="https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/downArrow.svg"
+                 alt="https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/downArrow.svg"/>
+        </div>
+    )
+}
+
 export function RiotText({newCss = {}}) {
     return (
         <div css={css({

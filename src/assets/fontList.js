@@ -21,6 +21,13 @@ const fontList = {
                 fontWeight: "400",
                 lineHeight: "13.2px",
                 letterSpacing: "0.02em",
+            },
+            14: {
+                fontFamily: "Roboto",
+                fontSize: "14px",
+                fontWeight: "400",
+                lineHeight: "16.8px",
+                letterSpacing: "0.02em",
             }
         },
         bold: {
@@ -30,6 +37,16 @@ const fontList = {
                 fontWeight: "700",
                 lineHeight: "14.4px",
                 letterSpacing: "0.02em",
+            }
+        },
+        medium: {
+            16: {
+                fontFamily: "Roboto",
+                fontSize: "16px",
+                fontWeight: "500",
+                lineHeight: "19.2px",
+                letterSpacing: "0.02em",
+
             }
         }
     }

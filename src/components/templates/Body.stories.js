@@ -1,5 +1,5 @@
 import React from 'react';
-import {SoloMainBody} from "./Body";
+import {DuoMainBody, SoloMainBody} from "./Body";
 import {withRouter} from "storybook-addon-react-router-v6";
 
 export default {
@@ -13,6 +13,18 @@ export default {
 }
 
 const SoloMainBodyTemplate = (args) => <SoloMainBody {...args}/>
+const DuoMainBodyTemplate = (args) => <DuoMainBody {...args}/>
 
 export const StorySoloMainBody = SoloMainBodyTemplate.bind({});
-StorySoloMainBody.args = {}
+StorySoloMainBody.args = {
+    newCss: {
+        paddingTop: "276px",
+    }
+}
+
+export const StoryDuoMainBody = DuoMainBodyTemplate.bind({});
+StoryDuoMainBody.args = {
+    newCss: {
+        paddingTop: "276px",
+    }
+}

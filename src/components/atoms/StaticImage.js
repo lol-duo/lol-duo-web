@@ -1,5 +1,44 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
+import colorList from "../../assets/colorList";
+
+export function SelectChampion({newCss = {}, src}) {
+    return (
+        <img css={css({
+            width: "44px",
+            height: "44px",
+            border: "1px dashed" + colorList.secondary.beige,
+            borderRadius: "50%",
+        })} src={src} alt="champion"/>
+    )
+}
+
+export function SelectLine({newCss = {}, line, onClick}) {
+    let lineImg = {
+        ALL: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/ALL.svg",
+        TOP: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/TOP.svg",
+        JUNGLE: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/JUNGLE.svg",
+        MIDDLE: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/MIDDLE.svg",
+        BOTTOM: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/BOTTOM.svg",
+        SUPPORT: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/UTILITY.svg",
+    }
+    return (<div onClick={onClick} css={css({
+        width: "44px",
+        height: "44px",
+        backgroundColor: colorList.grayscale["400"],
+        borderRadius: "50%",
+        position: "relative",
+
+
+    })}><img css={css({
+        position: "absolute",
+        top: "10px",
+        left: "10px",
+        width: "24px",
+        height: "24px",
+        ...newCss
+    })} src={lineImg[line]} alt={lineImg["top"]}/></div>)
+}
 
 export function DotDotDot({newCss = {}}) {
     return (
