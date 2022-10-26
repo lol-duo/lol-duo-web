@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
+import championListData from "../../assets/ChampionList.json";
 import {DuoTable, SoloTable} from "../organisms/Table";
 import colorList from "../../assets/colorList";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {SearchBarChampion, SearchBarPosition} from "../moecules/SearchBarList";
-import {SelectLine} from "../atoms/StaticImage";
+import {SearchImg, SelectLine} from "../atoms/StaticImage";
 
 const duoMainBody = {
     table: {
@@ -21,6 +22,11 @@ const duoMainBody = {
         height: "76px",
         borderRadius: "100px",
         backgroundColor: colorList.semantic.card,
+    },
+    searchImg: {
+        position: "absolute",
+        top: "18.5px",
+        left: "212px",
     }
 
 }
@@ -34,6 +40,9 @@ const soloMainBody = {
 }
 
 export function DuoMainBody({newCss = {}}) {
+
+    const ChosungSearch = require("hangul-chosung-search-js");
+    const [championName, setChampionName] = useState("");
 
     const [duoChampionListResult, setDuoChampionListResult] = useState([
         {
@@ -154,6 +163,7 @@ export function DuoMainBody({newCss = {}}) {
                     </div>
                 </div>
                 {dropdownList[0].position && PositionDropDown(0)}
+                {dropdownList[0].champion && ChampionDropDown(0)}
             </div>
             <div css={css({
                 position: "relative",
@@ -178,11 +188,10 @@ export function DuoMainBody({newCss = {}}) {
                     }])}>
                         <SearchBarChampion src={duoChampionSelect[1].championImgUrl}
                                            name={duoChampionSelect[1].championName}/>
-
-                        <SearchBarChampion/>
                     </div>
                 </div>
                 {dropdownList[1].position && PositionDropDown(1)}
+                {dropdownList[1].champion && ChampionDropDown(1)}
             </div>
         </div>)
     }
@@ -195,14 +204,114 @@ export function DuoMainBody({newCss = {}}) {
             championName: duoChampionSelect[where].championName
         }
     }
+
+    const SelectLineInfoByChampion = (champion, where) => {
+        return {
+            level: where,
+            position: duoChampionSelect[where].position,
+            id: champion.id,
+            championName: champion.name,
+            championImgUrl: champion.imgUrl
+        }
+    }
+
+    const onChangeName = (e) => {
+        setChampionName(e.target.value);
+    };
+
+    const championListli = (where) => championListData.map((c) => {
+        return (
+            ChosungSearch.isSearch(championName, c.name) && (
+                <li css={css({
+                    position: "relative",
+                    display: "block"
+                })}>
+                    <img
+                        css={css({width: "36px", height: "36px"})}
+                        src={c.imgUrl}
+                        alt={c.imgUrl}
+                        onClick={() => settingDuoChampionSelect(SelectLineInfoByChampion(c, where))}
+                    ></img>
+                </li>
+            )
+        );
+    });
+
     const ChampionDropDown = (where) => {
         return (
             <div css={css({
                 position: "absolute",
+                left: "198px",
+                top: "84px",
                 width: "244px",
                 height: "253px",
             })}>
-                <div css={css()}></div>
+                <div css={css({
+                    position: "absolute",
+                    left: "0px",
+                    top: "0px",
+                    width: "244px",
+                    height: "53px",
+                    backgroundColor: colorList.semantic.hover,
+                    borderRadius: "20px",
+                    zIndex: "90",
+                })}>
+                    <div>
+                        <input
+                            css={css({
+                                position: "absolute",
+                                left: "16px",
+                                top: "18px",
+                                backgroundColor: colorList.semantic.hover,
+                                border: "none",
+                                ":focus": {
+                                    outline: "none"
+                                }
+                            })}
+                            type="text"
+                            value={championName}
+                            onChange={onChangeName}
+                        />
+                    </div>
+                    <div css={css({
+                        position: "absolute",
+                        boxSizing: "border-box",
+                        top: "43px",
+                        width: "244px",
+                        height: "1px",
+
+                        padding: "0px 16px 0px 16px",
+                    })}>
+                        <div css={css({
+                            backgroundColor: colorList.grayscale["100"],
+                            height: "1px",
+                        })}/>
+                    </div>
+                    <SearchImg newCss={duoMainBody.searchImg}/>
+                </div>
+                <div css={css({
+                    position: "absolute",
+                    width: "244px",
+                    height: "236px",
+                    left: "0px",
+                    top: "17px",
+                    backgroundColor: colorList.semantic.hover,
+                    borderRadius: "0px 0px 16px 16px",
+                })}>
+                    <div css={css({
+                        position: "absolute",
+                        marginLeft: "16px",
+                        paddingRight: "16px",
+                        width: "212px",
+                        height: "212px",
+                        left: "0px",
+                        top: "24px",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(5, 1fr)",
+                        overflow: "auto",
+                    })}>{championListli(where)}</div>
+
+                </div>
             </div>
         )
     }

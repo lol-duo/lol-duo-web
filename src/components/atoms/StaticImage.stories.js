@@ -1,5 +1,5 @@
 import React from 'react';
-import {DarkLogo, DotDotDot, LightLogo, LightName, SelectChampion, SelectLine} from "./StaticImage";
+import {DarkLogo, DotDotDot, LightLogo, LightName, SearchImg, SelectChampion, SelectLine} from "./StaticImage";
 
 export default {
     title: "StaticImage",
@@ -11,6 +11,7 @@ const LightNameTemplate = (args) => <LightName {...args}/>
 const DotDotDotTemplate = (args) => <DotDotDot {...args}/>
 const SelectLineTemplate = (args) => <SelectLine {...args}/>
 const SelectChampionTemplate = (args) => <SelectChampion {...args}/>
+const SearchImgTemplate = (args) => <SearchImg {...args}/>
 
 export const StoryDarkLogo = DarkLogoTemplate.bind({});
 StoryDarkLogo.args = {}
@@ -33,3 +34,6 @@ export const StorySelectChampion = SelectChampionTemplate.bind({});
 StorySelectChampion.args = {
     src: "https://d2d4ci5rabfoyr.cloudfront.net/champion/Annie.png",
 }
+
+export const StorySearchImg = SearchImgTemplate.bind({});
+StorySearchImg.args = {}

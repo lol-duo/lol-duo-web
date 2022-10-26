@@ -12,19 +12,24 @@ const SoloChampionTemplate = (args) => <SoloChampion {...args}/>
 export const StoryChampion = ChampionTemplate.bind({});
 StoryChampion.args = {
     championInfo: {
-        champion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
-        rune: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
-        line: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
+        championImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg",
+        mainRuneImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/mainRune/Conqueror.svg",
+        positionImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/position/MIDDLE.svg",
     }
 }
 export const StoryDuoChampion = DuoChampionTemplate.bind({});
 StoryDuoChampion.args = {
-    championInfo: StoryChampion.args.championInfo,
-    name: "람머스",
+    championInfo: {
+        ...StoryChampion.args.championInfo,
+        championName: "람머스",
+    }
+
 }
 
 export const StorySoloChampion = SoloChampionTemplate.bind({});
 StorySoloChampion.args = {
-    championInfo: StoryChampion.args.championInfo,
+    championInfo: {
+        ...StoryChampion.args.championInfo,
+    },
     name: "람머스",
 }

@@ -13,6 +13,17 @@ export function SelectChampion({newCss = {}, src}) {
     )
 }
 
+export function SearchImg({newCss = {}}) {
+    return (
+        <img css={css({
+            width: "16px",
+            height: "16px",
+            ...newCss
+        })} src="https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/searchGlass.svg"
+             alt="https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/searchGlass.svg"/>
+    )
+}
+
 export function SelectLine({newCss = {}, line, onClick}) {
     let lineImg = {
         ALL: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/ALL.svg",
