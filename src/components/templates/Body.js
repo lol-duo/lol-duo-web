@@ -103,7 +103,6 @@ export function DuoMainBody({newCss = {}}) {
             championName: list.championName,
             championImgUrl: list.championImgUrl
         }])
-        setDuoChampionListResultByApi().then(r => console.log(r));
     }
 
 
@@ -370,6 +369,34 @@ export function DuoMainBody({newCss = {}}) {
 
 export function SoloMainBody({newCss = {}}) {
 
+    const ChosungSearch = require("hangul-chosung-search-js");
+    const [championName, setChampionName] = useState("");
+
+    const [soloChampionSelect, setSoloChampionSelect] = useState({
+        id: 0,
+        position: "ALL",
+        championName: "ALL",
+        championImgUrl: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/ALL.svg",
+    });
+
+    const settingSoloChampionSelect = (list) => {
+        console.log(list);
+        setDropdownList({position: false, champion: false});
+        setSoloChampionSelect({
+            id: list.id,
+            position: list.position,
+            championName: list.championName,
+            championImgUrl: list.championImgUrl
+        });
+
+    }
+
+
+    const [dropdownList, setDropdownList] = useState({
+        position: false,
+        champion: false
+    });
+
     const [championListResult, setChampionListResult] = useState([
         {
             id: 15,
@@ -387,12 +414,13 @@ export function SoloMainBody({newCss = {}}) {
 
 
     const setChampionListResultByApi = useCallback(async () => {
+        console.log("setChampionListResultByApi" + soloChampionSelect.id);
         const apiData = await axios.get(
-            "https://api.lolduo.net/v2/soloInfo?championId=0&position=ALL"
+            "https://api.lolduo.net/v2/soloInfo?championId=" + soloChampionSelect.id + "&position=" + soloChampionSelect.position
         );
         setChampionListResult(apiData.data);
         console.log(apiData.data);
-    }, []);
+    }, [soloChampionSelect]);
 
     useEffect(() => {
         setChampionListResultByApi().then(r => console.log(r));
@@ -404,11 +432,198 @@ export function SoloMainBody({newCss = {}}) {
         bodyInfo: championListResult,
     }
 
+    const SearchBar = () => {
+        return (<div css={css({
+            position: "absolute",
+            top: "160px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            zIndex: "100",
+        })}>
+            <div css={css({
+                position: "relative",
+            })}>
+                <div css={css({
+                    ...duoMainBody.searchBar,
+
+                })}>
+                    <div onClick={() => setDropdownList({position: true, champion: false})} css={css({
+                        height: "44px",
+                        width: "134px",
+                    })}>
+                        <SearchBarPosition line={soloChampionSelect.position}/>
+                    </div>
+                </div>
+                <div onClick={() => setDropdownList({position: false, champion: true})}>
+                    <SearchBarChampion src={soloChampionSelect.championImgUrl}
+                                       name={soloChampionSelect.championName}/>
+                </div>
+                {dropdownList.position && PositionDropDown()}
+                {dropdownList.champion && ChampionDropDown()}
+            </div>
+        </div>)
+    }
+
+    const SelectLineInfoByPosition = (position) => {
+        return {
+            position: position,
+            id: soloChampionSelect.id,
+            championName: soloChampionSelect.championName
+        }
+    }
+
+    const SelectLineInfoByChampion = (champion) => {
+        return {
+            position: soloChampionSelect.position,
+            id: champion.id,
+            championName: champion.name,
+            championImgUrl: champion.imgUrl
+        }
+    }
+
+    const onChangeName = (e) => {
+        setChampionName(e.target.value);
+    };
+
+    const championListli = () => championListData.map((c) => {
+        return (
+            ChosungSearch.isSearch(championName, c.name) && (
+                <li css={css({
+                    position: "relative",
+                    display: "block"
+                })}>
+                    <img
+                        css={css({width: "36px", height: "36px"})}
+                        src={c.imgUrl}
+                        alt={c.imgUrl}
+                        onClick={() => settingSoloChampionSelect(SelectLineInfoByChampion(c))}
+                    ></img>
+                </li>
+            )
+        );
+    });
+
+    const ChampionDropDown = () => {
+        return (
+            <div css={css({
+                position: "absolute",
+                left: "198px",
+                top: "84px",
+                width: "244px",
+                height: "253px",
+            })}>
+                <div css={css({
+                    position: "absolute",
+                    left: "0px",
+                    top: "0px",
+                    width: "244px",
+                    height: "53px",
+                    backgroundColor: colorList.semantic.hover,
+                    borderRadius: "20px",
+                    zIndex: "90",
+                })}>
+                    <div>
+                        <input
+                            css={css({
+                                position: "absolute",
+                                left: "16px",
+                                top: "18px",
+                                backgroundColor: colorList.semantic.hover,
+                                border: "none",
+                                ":focus": {
+                                    outline: "none"
+                                }
+                            })}
+                            type="text"
+                            value={championName}
+                            onChange={onChangeName}
+                        />
+                    </div>
+                    <div css={css({
+                        position: "absolute",
+                        boxSizing: "border-box",
+                        top: "43px",
+                        width: "244px",
+                        height: "1px",
+
+                        padding: "0px 16px 0px 16px",
+                    })}>
+                        <div css={css({
+                            backgroundColor: colorList.grayscale["100"],
+                            height: "1px",
+                        })}/>
+                    </div>
+                    <SearchImg newCss={duoMainBody.searchImg}/>
+                </div>
+                <div css={css({
+                    position: "absolute",
+                    width: "244px",
+                    height: "236px",
+                    left: "0px",
+                    top: "17px",
+                    backgroundColor: colorList.semantic.hover,
+                    borderRadius: "0px 0px 16px 16px",
+                })}>
+                    <div css={css({
+                        position: "absolute",
+                        marginLeft: "16px",
+                        paddingRight: "16px",
+                        width: "212px",
+                        height: "212px",
+                        left: "0px",
+                        top: "24px",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(5, 1fr)",
+                        overflow: "auto",
+                    })}>{championListli()}</div>
+
+                </div>
+            </div>
+        )
+    }
+
+    const PositionDropDown = () => {
+        return (<div css={css({
+            position: "absolute",
+            boxSizing: "border-box",
+            top: "84px",
+            left: "31px",
+            display: "flex",
+            flexDirection: "row",
+            padding: "8px 16px",
+            gap: "8px",
+            backgroundColor: colorList.semantic.card,
+            borderRadius: "100px",
+            width: "336px",
+            height: "60px",
+        })}>
+            <div><SelectLine
+                onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("ALL"))}
+                line={"ALL"}/></div>
+            <div><SelectLine onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("TOP"))}
+                             line={"TOP"}/></div>
+            <div><SelectLine onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("JUNGLE"))}
+                             line={"JUNGLE"}/>
+            </div>
+            <div><SelectLine onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("MIDDLE"))}
+                             line={"MIDDLE"}/>
+            </div>
+            <div><SelectLine onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("BOTTOM"))}
+                             line={"BOTTOM"}/>
+            </div>
+            <div><SelectLine onClick={() => settingSoloChampionSelect(SelectLineInfoByPosition("SUPPORT"))}
+                             line={"SUPPORT"}/>
+            </div>
+        </div>)
+    }
+
     return (
         <div css={css({
             color: colorList.semantic.background,
             ...newCss
         })}>
+            {SearchBar()}
             <SoloTable newCss={soloMainBody.table} tableInfo={tableInfo}/>
         </div>
     )
