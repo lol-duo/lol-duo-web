@@ -46,7 +46,7 @@ export function SearchBarChampion({newCss = {}, src, name}) {
     )
 }
 
-export function SearchBarPosition({newCss = {}, line}) {
+export function SearchBarPosition2({newCss = {}, line}) {
     return (
         <div
             css={css({
