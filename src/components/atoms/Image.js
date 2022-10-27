@@ -1,6 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
 
+export function BigChampionImage({src, newCss = {}}) {
+    return <img css={css({
+        position: "absolute",
+        width: "64px",
+        height: "64px",
+        borderRadius: "50%",
+        ...newCss
+    })} src={src} alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/Rammus.svg"/>;
+}
+
 export function SoloChampionImage({src, newCss = {}}) {
     return <img css={
         css({

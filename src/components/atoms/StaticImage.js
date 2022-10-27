@@ -2,6 +2,19 @@
 import {css} from "@emotion/react";
 import colorList from "../../assets/colorList";
 
+export function LogoRank({newCss = {}, rank}) {
+    let logoRank = {
+        first: "",
+        second: "",
+        third: "",
+    }
+    return <img css={css({
+        height: "32px",
+        width: "32px",
+        ...newCss
+    })}/>
+}
+
 export function SelectChampion({newCss = {}, src}) {
     return (
         <img css={css({

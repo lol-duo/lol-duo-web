@@ -8,6 +8,7 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {SearchBarChampion, SearchBarPosition} from "../moecules/SearchBarList";
 import {SearchImg, SelectLine} from "../atoms/StaticImage";
+import {getDuoChampionListResultByApi} from "../../api/api";
 
 const duoMainBody = {
     table: {
@@ -115,17 +116,14 @@ export function DuoMainBody({newCss = {}}) {
     }]);
 
 
-    const setDuoChampionListResultByApi = useCallback(async () => {
-        const apiData = await axios.get(
-            "https://api.lolduo.net/v2/doubleInfo?championId=" + duoChampionSelect[0].id + "&championId2=" + duoChampionSelect[1].id + "&position=" + duoChampionSelect[0].position + "&position2=" + duoChampionSelect[1].position
-        );
-        setDuoChampionListResult(apiData.data);
-        console.log(apiData.data);
-    }, [duoChampionSelect]);
-
     useEffect(() => {
-        setDuoChampionListResultByApi().then(r => console.log(r));
-    }, [setDuoChampionListResultByApi]);
+        async function getDuoChampionListResult() {
+            const a = await getDuoChampionListResultByApi(duoChampionSelect);
+            setDuoChampionListResult(a);
+        }
+
+        getDuoChampionListResult().then(r => console.log(r));
+    }, [duoChampionSelect]);
 
     const SearchBar = () => {
         return (<div css={css({

@@ -1,9 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
-import {LineImage, RuneImage, SoloChampionImage} from "../atoms/Image";
+import {BigChampionImage, LineImage, RuneImage, SoloChampionImage} from "../atoms/Image";
 import {SoloChampionText} from "../atoms/Text";
 
 const champion = {
+    runeBig: {
+        position: "absolute",
+        left: "0px",
+        top: "23px",
+    },
+    lineBig: {
+        position: "absolute",
+        left: "75px",
+        top: "46px",
+    },
+    championBig: {
+        position: 'absolute',
+        left: "22px",
+    },
     champion: {
         position: "absolute",
         left: "22px",
@@ -29,6 +43,22 @@ const champion = {
         textAlign: "center",
         top: "2px",
     }
+}
+
+export function ChampionTop({championInfo, newCss = {}}) {
+    return (
+        <div css={css({
+            position: "relative",
+            width: "99px",
+            height: "70px",
+            ...newCss
+        })}>
+            <BigChampionImage newCss={champion.championBig} src={championInfo.championImgUrl}/>
+            <RuneImage newCss={champion.runeBig} src={championInfo.mainRuneImgUrl}/>
+            <LineImage newCss={champion.lineBig} src={championInfo.positionImgUrl}/>
+            <SoloChampionText newCss={champion.soloName} championInfo={championInfo}/>
+        </div>
+    );
 }
 
 export function Champion({championInfo, newCss = {}}) {
@@ -66,6 +96,22 @@ export function DuoChampion({championInfo, newCss = {}}) {
             css({
                 width: "71px",
                 height: "62px",
+                justifyContent: "center",
+                ...newCss
+            })
+        }>
+            <Champion championInfo={championInfo}/>
+            <SoloChampionText newCss={champion.duoName}>{championInfo.championName}</SoloChampionText>
+        </td>
+    )
+}
+
+export function DuoChampionTop({championInfo, newCss = {}}) {
+    return (
+        <td css={
+            css({
+                width: "99px",
+                height: "86px",
                 justifyContent: "center",
                 ...newCss
             })
