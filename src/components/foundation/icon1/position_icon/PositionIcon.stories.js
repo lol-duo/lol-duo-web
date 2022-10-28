@@ -7,7 +7,7 @@ const SearchBarPositionTemplate = (args) => <SearchBarPosition {...args}/>
 const SearchBarPositionCircleTemplate = (args) => <SearchBarPositionCircle {...args}/>
 
 export default {
-    title: "PositionIcon",
+    title: "positionIcon",
 }
 
 export const StorySearchBarPosition = SearchBarPositionTemplate.bind({});

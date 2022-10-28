@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
 
-const logo = {
+const cssList = {
     css: {
         height: "32px",
         weight: "164.8px"
@@ -13,11 +13,11 @@ const logo = {
 export function Logo({status, newCss = {}}) {
     return status === "Light" ?
         <img css={css({
-            ...logo.css,
+            ...cssList.css,
             ...newCss
-        })} src={logo.lightLogo} alt={logo.lightLogo}/> :
+        })} src={cssList.lightLogo} alt={cssList.lightLogo}/> :
         <img css={css({
-            ...logo.css,
+            ...cssList.css,
             ...newCss
-        })} src={logo.darkLogo} alt={logo.darkLogo}/>
+        })} src={cssList.darkLogo} alt={cssList.darkLogo}/>
 }
