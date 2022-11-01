@@ -27,8 +27,17 @@ const cssList = {
             left: "0px",
             top: "24px",
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: "4px",
             overflow: "auto",
+            gridTemplateColumns: "repeat(5, 36px)",
+            gridTemplateRows: "repeat(5, 36px)",
+        },
+        img: {
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            width: "36px",
+            height: "36px",
         }
     },
     searchBar: {
@@ -110,22 +119,14 @@ function championList({championName, newCss = {}, champion}) {
                                 })}>
                                     <img
                                         css={css({
-                                            position: "absolute",
-                                            top: "0px",
-                                            left: "0px",
-                                            width: "36px",
-                                            height: "36px",
+                                            ...cssList.championList.img
                                         })}
                                         src={championInfo.imgUrl}
                                         alt={championInfo.imgUrl}
                                     ></img>
                                     <div css={css({
-                                        position: "absolute",
                                         boxSizing: "border-box",
-                                        top: "0px",
-                                        left: "0px",
-                                        width: "36px",
-                                        height: "36px",
+                                        ...cssList.championList.img,
                                         border: champion === championInfo.name ? `2px solid ${colorList.alpha.gray000_70}` : "none",
                                     })}/>
                                 </div>
