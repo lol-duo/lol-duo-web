@@ -95,7 +95,7 @@ function searchBar({championName, setChampionName, newCss = {}}) {
     )
 }
 
-function championList({championName, newCss = {}, champion}) {
+function championList({championName, newCss = {}, champion, setChampion}) {
     return (
         <div css={css({
             position: "relative",
@@ -108,7 +108,7 @@ function championList({championName, newCss = {}, champion}) {
                 championListData.map((championInfo) => {
                     return (
                         ChosungSearch.isSearch(championName, championInfo.name) && (
-                            <li css={css({
+                            <li onClick={setChampion(championInfo)} css={css({
                                 position: "relative",
                                 display: "block"
                             })}>
@@ -139,8 +139,10 @@ function championList({championName, newCss = {}, champion}) {
     )
 }
 
-export function SearchBarChampion({newCss = {}, champion}) {
-
+export function SearchBarChampion({
+                                      newCss = {}, champion, setChampion = () => {
+    }
+                                  }) {
     const [championName, setChampionName] = useState("");
 
     return (
@@ -154,7 +156,7 @@ export function SearchBarChampion({newCss = {}, champion}) {
                 championName, newCss: {
                     position: "absolute",
                     top: "17px",
-                }, champion
+                }, champion, setChampion
             })}
             {searchBar({championName, setChampionName})}
             <div css={cssList.searchBar.bottom}/>

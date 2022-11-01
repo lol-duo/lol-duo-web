@@ -17,6 +17,7 @@ const colorList = {
     },
     alpha: {
         gray000_70: "#F9F9F9B2",
+        secondaryBeige_20: "#C8AA6E33",
     }
 };
 
