@@ -12,7 +12,7 @@ const gnb = {
     }
 };
 
-export function GnbLogo({newCss = {}}) {
+export function GnbLogo2({newCss = {}}) {
     return (
         <div css={css({
             height: "56px",
@@ -27,7 +27,7 @@ export function GnbLogo({newCss = {}}) {
     );
 }
 
-export function Gnb({children, newCss = {}}) {
+export function Gnb2({children, newCss = {}}) {
     return (
         <nav css={css({
             height: "48px",

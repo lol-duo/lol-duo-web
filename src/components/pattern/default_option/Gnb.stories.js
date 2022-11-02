@@ -19,6 +19,4 @@ export const StoryGnbLogo = GnbLogoTemplate.bind({});
 StoryGnbLogo.args = {}
 
 export const StoryGnb = GnbTemplate.bind({});
-StoryGnb.args = {
-    children: ["Duo", "Solo"]
-}
+StoryGnb.args = {}
