@@ -22,6 +22,10 @@ const colorList = {
     count: {
         downRed: "#EE5C5C",
         upGreen: "#44BB77",
+    },
+    main: {
+        primaryBlue: "#466CD2",
+        secondaryBeige: "#C8AA6E",
     }
 };
 

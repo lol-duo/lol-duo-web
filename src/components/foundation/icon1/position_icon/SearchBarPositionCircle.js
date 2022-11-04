@@ -15,8 +15,8 @@ const searchBarPositionCircleCss = {
     }
 }
 
-export function SearchBarPositionCircle({newCss = {}, position}) {
-    return <div css={css({
+export function SearchBarPositionCircle({newCss = {}, position, onClick}) {
+    return <div onClick={onClick} css={css({
         ...searchBarPositionCircleCss,
         ...newCss
     })}><SearchBarPosition newCss={

@@ -108,7 +108,7 @@ function championList({championName, newCss = {}, champion, setChampion}) {
                 championListData.map((championInfo) => {
                     return (
                         ChosungSearch.isSearch(championName, championInfo.name) && (
-                            <li onClick={setChampion(championInfo)} css={css({
+                            <li key={championInfo.id} onClick={() => setChampion(championInfo)} css={css({
                                 position: "relative",
                                 display: "block"
                             })}>
@@ -127,7 +127,10 @@ function championList({championName, newCss = {}, champion, setChampion}) {
                                     <div css={css({
                                         boxSizing: "border-box",
                                         ...cssList.championList.img,
-                                        border: champion === championInfo.name ? `2px solid ${colorList.alpha.gray000_70}` : "none",
+                                        border: champion === championInfo.name ? `2px solid ${colorList.main.secondaryBeige}` : "none",
+                                        ":hover": {
+                                            border: `2px solid ${colorList.alpha.gray000_70}`,
+                                        }
                                     })}/>
                                 </div>
                             </li>

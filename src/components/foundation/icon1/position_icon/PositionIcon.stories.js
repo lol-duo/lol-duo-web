@@ -1,6 +1,7 @@
 import React from 'react';
 import {SearchBarPosition} from "./SearchBarPosition";
 import {SearchBarPositionCircle} from "./SearchBarPositionCircle";
+import assets from "../../../../assets/assets";
 
 
 const SearchBarPositionTemplate = (args) => <SearchBarPosition {...args}/>
@@ -12,10 +13,10 @@ export default {
 
 export const StorySearchBarPosition = SearchBarPositionTemplate.bind({});
 StorySearchBarPosition.args = {
-    position: "TOP",
+    position: assets.position.all,
 }
 
 export const StorySearchBarPositionCircle = SearchBarPositionCircleTemplate.bind({});
 StorySearchBarPositionCircle.args = {
-    position: "TOP",
+    position: assets.position.all,
 }

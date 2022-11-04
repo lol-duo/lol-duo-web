@@ -9,6 +9,7 @@ const cssList = {
     table: {
         width: "676px",
         height: "54px",
+        background: colorList.semantic.card,
     },
     rank: {
         background: {
@@ -83,25 +84,30 @@ function RankTable({RankInfo, newCss = {}}) {
 
 export function SoloTable({championInfo, newCss = {}}) {
     return (
-        <tbody css={css({
+        <div css={css({
+            ...cssList.table,
+            position: "relative",
+            ":hover": {
+                background: colorList.semantic.hover,
+            },
             ...newCss
         })}>
-        <RankTable RankInfo={championInfo} newCss={{
-            position: "absolute",
-            top: "4px",
-            left: "0px",
-        }}/>
-        <Champion championInfo={championInfo} isSolo={true} size="small" newCss={{
-            position: "absolute",
-            top: "4px",
-            left: "162px",
-        }}/>
-        <div css={css({
-            ...cssList.winRate,
-            position: "absolute",
-            top: "20px",
-            left: "400px",
-        })}>{championInfo.winRate}</div>
-        </tbody>
+            <RankTable RankInfo={championInfo} newCss={{
+                position: "absolute",
+                top: "4px",
+                left: "0px",
+            }}/>
+            <Champion championInfo={championInfo} isSolo={true} size="small" newCss={{
+                position: "absolute",
+                top: "4px",
+                left: "162px",
+            }}/>
+            <div css={css({
+                ...cssList.winRate,
+                position: "absolute",
+                top: "20px",
+                left: "400px",
+            })}>{championInfo.winRate}</div>
+        </div>
     )
 }

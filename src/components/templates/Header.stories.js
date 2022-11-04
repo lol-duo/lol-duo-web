@@ -1,6 +1,6 @@
 import React from 'react';
-import {MainHeader} from "./Header";
 import {withRouter} from "storybook-addon-react-router-v6";
+import {MainHeader} from "./Header";
 
 export default {
     title: "Header",

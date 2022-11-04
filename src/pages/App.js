@@ -1,7 +1,7 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
 import {MainHeader} from "../components/templates/Header";
-import {DuoMainBody, SoloMainBody} from "../components/templates/Body";
+import {DuoMainBody, SoloMainBody} from "../components/templates/SoloBody";
 import {MainFooter} from "../components/templates/Footer";
 
 const mainPage = {

@@ -1,6 +1,7 @@
 import React from 'react';
-import {DuoMainBody, SoloMainBody} from "./Body";
+import {SoloMainBody} from "./SoloBody";
 import {withRouter} from "storybook-addon-react-router-v6";
+import {DuoMainBody} from "./DuoBody";
 
 export default {
     title: "Body",

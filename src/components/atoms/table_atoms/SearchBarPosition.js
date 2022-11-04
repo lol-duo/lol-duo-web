@@ -3,6 +3,7 @@
 import {css} from "@emotion/react";
 import {SearchBarPositionCircle} from "../../foundation/icon1/position_icon/SearchBarPositionCircle";
 import colorList from "../../../assets/colorList";
+import assets from "../../../assets/assets";
 
 const searchBarPositionCss = {
     boxSizing: "border-box",
@@ -15,9 +16,14 @@ const searchBarPositionCss = {
     backgroundColor: colorList.semantic.card,
 }
 
-const positionList = ["ALL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "SUPPORT"]
+const positionList = assets.position;
 
-export function SearchBarPosition({newCss = {}, selectedPosition}) {
+const positionArray = [positionList.all, positionList.top, positionList.jungle, positionList.middle, positionList.bottom, positionList.support];
+
+export function SearchBarPosition({
+                                      newCss = {}, selectedPosition, setPosition = () => {
+    }
+                                  }) {
     let newSearchBarPositionCircleCss = {
         backgroundColor: colorList.alpha.secondaryBeige_20,
     }
@@ -25,9 +31,11 @@ export function SearchBarPosition({newCss = {}, selectedPosition}) {
     return <div css={css({
         ...searchBarPositionCss,
         ...newCss
-    })}>{positionList.map((position) => {
+    })}>{positionArray.map((position) => {
         return selectedPosition === position ?
-            <SearchBarPositionCircle newCss={newSearchBarPositionCircleCss} position={position}/>
-            : <SearchBarPositionCircle position={position}/>
+            <SearchBarPositionCircle key={position} onClick={() => setPosition(position)}
+                                     newCss={newSearchBarPositionCircleCss}
+                                     position={position}/>
+            : <SearchBarPositionCircle key={position} onClick={() => setPosition(position)} position={position}/>
     })}</div>
 }

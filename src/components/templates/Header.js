@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import {Gnb, GnbLogo} from "../organisms/Gnb";
 import {css} from "@emotion/react";
+import {Gnb, GnbLogo} from "../pattern/default_option/Gnb";
 
 export function MainHeader({newCss = {}}) {
 
@@ -14,7 +14,7 @@ export function MainHeader({newCss = {}}) {
             ...newCss
         })}>
             <GnbLogo/>
-            <Gnb>{["Duo", "Solo"]}</Gnb>
+            <Gnb/>
         </div>
     );
 }
