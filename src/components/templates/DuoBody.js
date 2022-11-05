@@ -4,9 +4,9 @@ import {css} from "@emotion/react";
 import {SearchBar} from "../pattern/searchBar/SearchBar";
 import {useEffect, useState} from "react";
 import assets from "../../assets/assets";
-import {SoloTableHeader} from "../pattern/table/TableHeader";
-import {SoloTable} from "../pattern/table/SoloTable";
+import {DuoTableHeader} from "../pattern/table/TableHeader";
 import {getDuoChampionListResultByApi} from "../../api/api";
+import {BigDuoTable, DuoTable} from "../pattern/table/DuoTable";
 
 export function DuoMainBody({newCss = {}}) {
     const [userSelected, setUserSelected] = useState([{
@@ -116,7 +116,7 @@ export function DuoMainBody({newCss = {}}) {
                     left: "12px"
                 }} setMainPosition={setPosition2} setMainChampion={setChampion2}/>
             </div>
-            <SoloTableHeader newCss={{
+            <DuoTableHeader newCss={{
                 position: "absolute",
                 top: "276px",
                 left: "50%",
@@ -133,11 +133,31 @@ export function DuoMainBody({newCss = {}}) {
                 transform: "translateX(-50%)"
             })}>
                 {
-                    mainChampion.map((champion, index) => {
-                        return (
-                            <SoloTable key={index} championInfo={champion.champion1}/>
-                        )
-                    })
+                    mainChampion.length > 3 ?
+                        <>
+                            <BigDuoTable rankInfo={mainChampion[0]}/>
+                            <div css={css({
+                                display: "flex",
+                                flexDirection: "row",
+                                gap: "4px"
+                            })}>
+                                <BigDuoTable rankInfo={mainChampion[1]}/>
+                                <BigDuoTable rankInfo={mainChampion[2]}/>
+                            </div>
+                            {
+                                mainChampion.map((champion, index) => {
+                                    if (index > 2) {
+                                        return (
+                                            <DuoTable key={index} rankInfo={champion}/>
+                                        )
+                                    }
+                                })}</>
+                        :
+                        mainChampion.map((champion, index) => {
+                            return (
+                                <DuoTable key={index} rankInfo={champion}/>
+                            )
+                        })
                 }
             </div>
         </div>

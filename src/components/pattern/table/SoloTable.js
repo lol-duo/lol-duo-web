@@ -10,6 +10,9 @@ const cssList = {
         width: "676px",
         height: "54px",
         background: colorList.semantic.card,
+        ":hover": {
+            background: colorList.semantic.hover,
+        },
     },
     rank: {
         background: {
@@ -34,7 +37,7 @@ const cssList = {
     }
 }
 
-function RankChangeNumber({rankChangeNumber, newCss = {}}) {
+export function RankChangeNumber({rankChangeNumber, newCss = {}}) {
     let color = rankChangeNumber >= 0 ? colorList.count.downRed : colorList.count.upGreen;
     return (
         rankChangeNumber === 0 ?
@@ -45,7 +48,7 @@ function RankChangeNumber({rankChangeNumber, newCss = {}}) {
     )
 }
 
-function RankTable({RankInfo, newCss = {}}) {
+export function RankTable({RankInfo, newCss = {}}) {
     let font = RankInfo.rankNumber >= 4 ? fontList.roboto.regular["12"] : fontList.roboto.bold["12"];
     let rankColor = RankInfo.rankNumber >= 4 ? colorList.grayscale["050"] : colorList.secondary.beige;
 
@@ -87,9 +90,7 @@ export function SoloTable({championInfo, newCss = {}}) {
         <div css={css({
             ...cssList.table,
             position: "relative",
-            ":hover": {
-                background: colorList.semantic.hover,
-            },
+
             ...newCss
         })}>
             <RankTable RankInfo={championInfo} newCss={{
