@@ -17,7 +17,7 @@ const lineImg = {
 }
 
 export function SearchBarPosition({newCss = {}, position}) {
-    let imgSrc = lineImg["ALL"];
+    let imgSrc;
     switch (position) {
         case assets.position.all:
             imgSrc = lineImg["ALL"];
@@ -34,7 +34,7 @@ export function SearchBarPosition({newCss = {}, position}) {
         case assets.position.bottom:
             imgSrc = lineImg["BOTTOM"];
             break;
-        case assets.position.support:
+        default:
             imgSrc = lineImg["SUPPORT"];
     }
     return <img css={css({

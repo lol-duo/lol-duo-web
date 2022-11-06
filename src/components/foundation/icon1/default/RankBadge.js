@@ -8,14 +8,14 @@ const badgeCss = {
 }
 
 const RankBadgeList = {
-    first: "",
-    second: "",
-    third: "",
-    fourth: "",
+    first: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/rankChange/1.svg",
+    second: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/rankChange/2.svg",
+    third: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/rankChange/3.svg",
+    fourth: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/rankChange/4.svg",
 }
 
 export function RankBadge({newCss = {}, rank}) {
-    let nowRank = "first";
+    let nowRank;
     switch (rank) {
         case 1:
             nowRank = "first";
@@ -26,7 +26,7 @@ export function RankBadge({newCss = {}, rank}) {
         case 3:
             nowRank = "third";
             break;
-        case 4:
+        default:
             nowRank = "fourth";
             break;
     }

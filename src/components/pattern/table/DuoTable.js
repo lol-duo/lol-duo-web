@@ -7,6 +7,7 @@ import {RankChangeNumber, RankTable} from "./SoloTable";
 import {Champion} from "../../atoms/table_atoms/Champion";
 import colorList from "../../../assets/colorList";
 import fontList from "../../../assets/fontList";
+import {DonutChart} from "../../foundation/chart/DonutChart";
 
 const cssList = {
     table: {
@@ -79,7 +80,7 @@ export function BigDuoTable({newCss = {}, rankInfo}) {
             <div css={css({
                 ...cssList.rank,
             })}>
-                <RankBadge rank={1} newCss={{
+                <RankBadge rank={rankInfo.rankNumber} newCss={{
                     position: "absolute",
                     left: "4px",
                     top: "0px",
@@ -88,7 +89,6 @@ export function BigDuoTable({newCss = {}, rankInfo}) {
                     position: "absolute",
                     left: "0px",
                     bottom: "0px",
-
                 }} rankChangeNumber={rankInfo.rankChangeNumber}/>
                 <RankChangeNumber newCss={{
                     position: "absolute",
@@ -100,6 +100,7 @@ export function BigDuoTable({newCss = {}, rankInfo}) {
                 ...cssList.champion,
             })}>
                 <Champion isSolo={false} championInfo={rankInfo.champion1} size="big"/>
+                <DonutChart size="60px" color="#466CD2" percent={0.6512}/>
                 <Champion isSolo={false} championInfo={rankInfo.champion2} size="big"/>
             </div>
 
@@ -129,8 +130,8 @@ export function DuoTable({rankInfo, newCss = {}}) {
                 position: "absolute",
                 left: "282px",
                 top: "38px",
-            })} src="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.svg"
-                 alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.svg"/>
+            })} src="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"
+                 alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"/>
             <div css={css({
                 ...cssList.winRate,
                 position: "absolute",
@@ -143,8 +144,8 @@ export function DuoTable({rankInfo, newCss = {}}) {
                 position: "absolute",
                 left: "374px",
                 top: "38px",
-            })} src="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.svg"
-                 alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.svg"/>
+            })} src="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"
+                 alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"/>
             <Champion isSolo={false} championInfo={rankInfo.champion1} size="small" newCss={{
                 position: "absolute",
                 top: "7px",

@@ -85,11 +85,12 @@ export function SearchBar({newCss = {}, setMainChampion, setMainPosition}) {
     return (
         <div css={css({
             width: "474px",
+            height: "76px",
             ...newCss
         })}>
             <div css={css({
                 ...cssList.searchBar,
-                position: "absolute",
+                position: "relative",
                 top: "0px",
                 left: "0px",
             })}>

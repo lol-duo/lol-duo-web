@@ -63,31 +63,22 @@ export function SoloMainBody({newCss = {}}) {
 
     return (
         <div css={css({
-            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             ...newCss
         })}>
             <SearchBar newCss={{
-                position: "absolute",
-                top: "176px",
-                left: "50%",
-                transform: "translateX(-50%)",
                 zIndex: "1000"
             }} setMainPosition={setPosition} setMainChampion={setChampion}/>
             <SoloTableHeader newCss={{
-                position: "absolute",
-                top: "276px",
-                left: "50%",
-                transform: "translateX(-50%)",
-
+                marginTop: "24px",
             }}/>
             <div css={css({
-                position: "absolute",
-                top: "312px",
+                marginTop: "4px",
                 display: "flex",
                 flexDirection: "column",
                 gap: "4px",
-                left: "50%",
-                transform: "translateX(-50%)"
             })}>
                 {
                     mainChampion.map((champion, index) => {

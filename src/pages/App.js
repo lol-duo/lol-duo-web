@@ -1,29 +1,36 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
 import {MainHeader} from "../components/templates/Header";
-import {DuoMainBody, SoloMainBody} from "../components/templates/SoloBody";
+import {SoloMainBody} from "../components/templates/SoloBody";
 import {MainFooter} from "../components/templates/Footer";
+import {DuoMainBody} from "../components/templates/DuoBody";
+import {css} from "@emotion/react";
 
-const mainPage = {
-    header: {},
-    body: {
-        paddingTop: "276px",
-    },
-    footer: {
-        paddingTop: "101px",
-    }
-}
 
 function App() {
     return (
-        <div>
+        <div css={css({
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+        })}>
             <MainHeader/>
             <Routes>
                 <Route path="/" element={<Navigate to="/duo"/>}/>
-                <Route path="/solo" element={<SoloMainBody newCss={mainPage.body}/>}/>
-                <Route path="/duo" element={<DuoMainBody newCss={mainPage.body}/>}/>
+                <Route path="/solo" element={<SoloMainBody newCss={{
+                    width: "100%",
+                    minHeight: "100vh",
+                    height: "auto",
+                    overflow: "auto",
+                }}/>}/>
+                <Route path="/duo" element={<DuoMainBody newCss={{
+                    width: "100%",
+                    minHeight: "100vh",
+                    height: "auto",
+                    overflow: "auto",
+                }}/>}/>
             </Routes>
-            <MainFooter newCss={mainPage.footer}></MainFooter>
+            <MainFooter></MainFooter>
         </div>
 
     );

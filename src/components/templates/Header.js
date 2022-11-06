@@ -10,7 +10,7 @@ export function MainHeader({newCss = {}}) {
             top: "0",
             left: "0",
             width: "100%",
-            zIndex: "100",
+            zIndex: "10000",
             ...newCss
         })}>
             <GnbLogo/>

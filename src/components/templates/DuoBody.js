@@ -147,11 +147,11 @@ export function DuoMainBody({newCss = {}}) {
                             {
                                 mainChampion.map((champion, index) => {
                                     if (index > 2) {
-                                        return (
-                                            <DuoTable key={index} rankInfo={champion}/>
-                                        )
+                                        return <DuoTable key={index} rankInfo={champion}/>
                                     }
-                                })}</>
+                                })
+                            }
+                        </>
                         :
                         mainChampion.map((champion, index) => {
                             return (

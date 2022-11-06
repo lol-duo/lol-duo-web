@@ -14,27 +14,27 @@ const cssList = {
 
 export function SoloTableHeader({newCss = {}}) {
     return (
-        <thead css={css({
+        <div css={css({
             background: colorList.semantic.card,
             width: "676px",
             height: "32px",
             ...newCss
         })}>
-        {
-            <tr css={css({
-                width: "676px",
-                height: "32px",
-            })}>
-                <th css={css({
-                    ...cssList.th,
-                    textAlign: "center",
-                    borderRadius: "4px 4px 0px 0px",
+            {
+                <tr css={css({
                     width: "676px",
-                })}>Rank
-                </th>
-            </tr>
-        }
-        </thead>
+                    height: "32px",
+                })}>
+                    <th css={css({
+                        ...cssList.th,
+                        textAlign: "center",
+                        borderRadius: "4px 4px 0px 0px",
+                        width: "676px",
+                    })}>Rank
+                    </th>
+                </tr>
+            }
+        </div>
     );
 }
 

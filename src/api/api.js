@@ -13,7 +13,7 @@ function getPositionName(position) {
             return "MIDDLE";
         case assets.position.bottom:
             return "BOTTOM";
-        case assets.position.support:
+        default:
             return "UTILITY";
     }
 }

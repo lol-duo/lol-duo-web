@@ -24,9 +24,10 @@ const riotText = "© 2022 lolduo.net isn’t endorsed by Riot Games and doesn’
 
 export function MainFooter({newCss = {}}) {
     return (
-        <footer css={css({
+        <div css={css({
             ...cssList.footer,
             position: "relative",
+            top: "10px",
             ...newCss
         })}>
             <Logo status={"Dark"} newCss={{
@@ -40,6 +41,6 @@ export function MainFooter({newCss = {}}) {
                 top: "80px",
                 left: "60px",
             })}>{riotText}</div>
-        </footer>
+        </div>
     )
 }
