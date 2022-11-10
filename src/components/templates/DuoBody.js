@@ -98,39 +98,35 @@ export function DuoMainBody({newCss = {}}) {
 
     return (
         <div css={css({
-            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             ...newCss
         })}>
             <div css={css({
-                position: "absolute",
+
                 width: "960px",
                 display: "flex",
-                left: "50%",
-                top: "176px",
-                transform: "translateX(-50%)",
+
                 zIndex: "1000"
             })}>
-                <SearchBar newCss={{}} setMainPosition={setPosition1} setMainChampion={setChampion1}/>
+                <SearchBar newCss={{
+                    position: "relative",
+                }} setMainPosition={setPosition1} setMainChampion={setChampion1}/>
                 <SearchBar newCss={{
                     position: "relative",
                     left: "12px"
                 }} setMainPosition={setPosition2} setMainChampion={setChampion2}/>
             </div>
             <DuoTableHeader newCss={{
-                position: "absolute",
-                top: "276px",
-                left: "50%",
-                transform: "translateX(-50%)",
-
+                marginTop: "24px",
             }}/>
             <div css={css({
-                position: "absolute",
-                top: "312px",
+                marginTop: "4px",
                 display: "flex",
                 flexDirection: "column",
                 gap: "4px",
-                left: "50%",
-                transform: "translateX(-50%)"
+
             })}>
                 {
                     mainChampion.length > 3 ?

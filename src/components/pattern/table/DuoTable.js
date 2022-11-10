@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-
 import {css} from "@emotion/react";
+
 import {RankBadge} from "../../foundation/icon1/default/RankBadge";
 import {RankUpIcon} from "../../foundation/icon1/default/Icon";
 import {RankChangeNumber, RankTable} from "./SoloTable";
@@ -66,6 +66,12 @@ const cssList = {
         color: colorList.grayscale["000"],
         height: "14px",
         width: "41px",
+    },
+    charColor: {
+        1: colorList.chart.first,
+        2: colorList.chart.second,
+        3: colorList.chart.third,
+        4: colorList.chart.fourth
     }
 
 }
@@ -100,7 +106,7 @@ export function BigDuoTable({newCss = {}, rankInfo}) {
                 ...cssList.champion,
             })}>
                 <Champion isSolo={false} championInfo={rankInfo.champion1} size="big"/>
-                <DonutChart size="60px" color="#466CD2" percent={0.6512}/>
+                <DonutChart size="60px" color={cssList.charColor[rankInfo.rankNumber]} percent={rankInfo.winRate}/>
                 <Champion isSolo={false} championInfo={rankInfo.champion2} size="big"/>
             </div>
 
@@ -146,7 +152,7 @@ export function DuoTable({rankInfo, newCss = {}}) {
                 top: "38px",
             })} src="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"
                  alt="https://d2d4ci5rabfoyr.cloudfront.net/mainPage/icon/listImage.png"/>
-            <Champion isSolo={false} championInfo={rankInfo.champion1} size="small" newCss={{
+            <Champion isSolo={false} championInfo={rankInfo.champion2} size="small" newCss={{
                 position: "absolute",
                 top: "7px",
                 left: "402px",

@@ -26,6 +26,13 @@ const colorList = {
     main: {
         primaryBlue: "#466CD2",
         secondaryBeige: "#C8AA6E",
+    },
+    chart: {
+        chart: "#C6CAD3",
+        first: "#466CD2",
+        second: "#D2466B",
+        third: "#5646D2",
+        fourth: "#4E4E4E",
     }
 };
 

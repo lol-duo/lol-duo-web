@@ -12,10 +12,11 @@ const cssList = {
     }
 }
 
-export function SoloTableHeader({newCss = {}}) {
+export function DuoTableHeader({newCss = {}}) {
     return (
         <div css={css({
             background: colorList.semantic.card,
+            borderRadius: "4px 4px 0px 0px",
             width: "676px",
             height: "32px",
             ...newCss
@@ -38,7 +39,7 @@ export function SoloTableHeader({newCss = {}}) {
     );
 }
 
-export function DuoTableHeader({newCss = {}}) {
+export function SoloTableHeader({newCss = {}}) {
     return (
         <thead css={css({
             background: colorList.semantic.card,

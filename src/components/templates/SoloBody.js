@@ -69,6 +69,7 @@ export function SoloMainBody({newCss = {}}) {
             ...newCss
         })}>
             <SearchBar newCss={{
+                position: "relative",
                 zIndex: "1000"
             }} setMainPosition={setPosition} setMainChampion={setChampion}/>
             <SoloTableHeader newCss={{

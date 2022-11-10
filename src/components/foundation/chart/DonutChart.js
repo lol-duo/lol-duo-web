@@ -26,7 +26,7 @@ export function DonutChart({color, percent, size}) {
                     strokeDashoffset={2 * Math.PI * 90 * 0.25}
                 />
             </AniSvg>
-            <Percent color={color}>{percent * 100}%</Percent>
+            <Percent color={color}>{Math.round(percent * 10000) / 100}%</Percent>
         </Chart>
     );
 }

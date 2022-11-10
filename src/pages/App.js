@@ -18,16 +18,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to="/duo"/>}/>
                 <Route path="/solo" element={<SoloMainBody newCss={{
-                    width: "100%",
-                    minHeight: "100vh",
-                    height: "auto",
-                    overflow: "auto",
+                    paddingTop: "176px"
                 }}/>}/>
                 <Route path="/duo" element={<DuoMainBody newCss={{
-                    width: "100%",
-                    minHeight: "100vh",
-                    height: "auto",
-                    overflow: "auto",
+                    paddingTop: "176px"
                 }}/>}/>
             </Routes>
             <MainFooter></MainFooter>
