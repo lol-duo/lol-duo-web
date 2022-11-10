@@ -15,7 +15,7 @@ const cssList = {
         backPage: {
             width: "244px",
             height: "236px",
-            backgroundColor: colorList.semantic.hover,
+            backgroundColor: colorList.semantic.card,
             borderRadius: "0px 0px 16px 16px",
         },
         champion: {
@@ -44,11 +44,11 @@ const cssList = {
         background: {
             width: "244px",
             height: "33px",
-            backgroundColor: colorList.semantic.hover,
+            backgroundColor: colorList.semantic.card,
             borderRadius: "20px",
         },
         input: {
-            backgroundColor: colorList.semantic.hover,
+            backgroundColor: colorList.semantic.card,
             border: "none",
             ":focus": {
                 outline: "none"
@@ -61,7 +61,7 @@ const cssList = {
             height: "0px",
             top: "0px",
             left: "16px",
-            borderBottom: "1px solid" + colorList.semantic.card,
+            borderBottom: "1px solid" + colorList.grayscale["100"],
         }
     }
 }
