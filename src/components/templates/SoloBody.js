@@ -7,6 +7,7 @@ import assets from "../../assets/assets";
 import {getSoloChampionListResultByApi} from "../../api/api";
 import {SoloTableHeader} from "../pattern/table/TableHeader";
 import {SoloTable} from "../pattern/table/SoloTable";
+import {createSearchParams, Link} from "react-router-dom";
 
 export function SoloMainBody({newCss = {}}) {
     const [userSelected, setUserSelected] = useState({
@@ -84,7 +85,12 @@ export function SoloMainBody({newCss = {}}) {
                 {
                     mainChampion.map((champion, index) => {
                         return (
-                            <SoloTable key={index} championInfo={champion}/>
+                            <Link to={{
+                                pathname: "/solo/detail",
+                                search: `${createSearchParams({id: mainChampion[index].id + ""})}`
+                            }}>
+                                <SoloTable key={index} championInfo={champion}/>
+                            </Link>
                         )
                     })
                 }

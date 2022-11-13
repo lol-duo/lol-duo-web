@@ -22,18 +22,18 @@ export function DuoTableHeader({newCss = {}}) {
             ...newCss
         })}>
             {
-                <tr css={css({
+                <div css={css({
                     width: "676px",
                     height: "32px",
                 })}>
-                    <th css={css({
+                    <div css={css({
                         ...cssList.th,
                         textAlign: "center",
                         borderRadius: "4px 4px 0px 0px",
                         width: "676px",
                     })}>Rank
-                    </th>
-                </tr>
+                    </div>
+                </div>
             }
         </div>
     );

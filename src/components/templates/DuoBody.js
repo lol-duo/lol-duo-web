@@ -108,7 +108,6 @@ export function DuoMainBody({newCss = {}}) {
 
                 width: "960px",
                 display: "flex",
-
                 zIndex: "1000"
             })}>
                 <SearchBar newCss={{
@@ -132,8 +131,8 @@ export function DuoMainBody({newCss = {}}) {
                 {
                     mainChampion.length > 3 ?
                         <>
-                            <Link to={{
-                                pathname: "/solo/detail",
+                            <Link key="firstBigTable" to={{
+                                pathname: "/duo/detail",
                                 search: `${createSearchParams({id: mainChampion[0].id + ""})}`
                             }}>
                                 <BigDuoTable rankInfo={mainChampion[0]}/>
@@ -144,13 +143,13 @@ export function DuoMainBody({newCss = {}}) {
                                 gap: "4px"
                             })}>
                                 <Link to={{
-                                    pathname: "/solo/detail",
+                                    pathname: "/duo/detail",
                                     search: `${createSearchParams({id: mainChampion[1].id + ""})}`
                                 }}>
                                     <BigDuoTable rankInfo={mainChampion[1]}/>
                                 </Link>
                                 <Link to={{
-                                    pathname: "/solo/detail",
+                                    pathname: "/duo/detail",
                                     search: `${createSearchParams({id: mainChampion[2].id + ""})}`
                                 }}>
                                     <BigDuoTable rankInfo={mainChampion[2]}/>
@@ -160,11 +159,11 @@ export function DuoMainBody({newCss = {}}) {
                                 mainChampion.map((champion, index) => {
                                     if (index > 2) {
                                         return (
-                                            <Link to={{
-                                                pathname: "/solo/detail",
+                                            <Link key={index} to={{
+                                                pathname: "/duo/detail",
                                                 search: `${createSearchParams({id: mainChampion[index].id + ""})}`
                                             }}>
-                                                <DuoTable key={index} rankInfo={champion}/>
+                                                <DuoTable rankInfo={champion}/>
                                             </Link>)
                                     } else {
                                         return null;
@@ -175,11 +174,11 @@ export function DuoMainBody({newCss = {}}) {
                         :
                         mainChampion.map((champion, index) => {
                             return (
-                                <Link to={{
-                                    pathname: "/solo/detail",
+                                <Link key={index} to={{
+                                    pathname: "/duo/detail",
                                     search: `${createSearchParams({id: mainChampion[index].id + ""})}`
                                 }}>
-                                    <DuoTable key={index} rankInfo={champion}/>
+                                    <DuoTable rankInfo={champion}/>
                                 </Link>
                             )
                         })
