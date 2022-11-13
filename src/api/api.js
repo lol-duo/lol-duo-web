@@ -41,12 +41,21 @@ export function getDuoChampionListResultByApi({setDuoChampionListResult, id1, id
     )
 }
 
-export function getSoloChampionDetailListResultByApi({setSoloDetailChampionListResult, id}) {
-    axios.get("https://api.lolduo.net/v2/doubleChampionDetailDummy?dbId=" + id)
+export function getSoloChampionDetailListResultByApi({setSoloDetailState, id}) {
+    axios.get("https://api.lolduo.net/v2/soloChampionDetail?dbId=" + id)
         .then((response) => {
-            setSoloDetailChampionListResult(response.data);
+            setSoloDetailState(response.data);
         }).catch((error) => {
-            setSoloDetailChampionListResult(null);
+            console.log(error);
+        }
+    )
+}
+
+export function getDuoChampionDetailListResultByApi({setDuoDetailState, id}) {
+    axios.get("https://api.lolduo.net/v2/doubleChampionDetail?dbId=" + id)
+        .then((response) => {
+            setDuoDetailState(response.data);
+        }).catch((error) => {
             console.log(error);
         }
     )

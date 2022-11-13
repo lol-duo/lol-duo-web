@@ -41,36 +41,36 @@ export function DuoTableHeader({newCss = {}}) {
 
 export function SoloTableHeader({newCss = {}}) {
     return (
-        <thead css={css({
+        <div css={css({
             background: colorList.semantic.card,
             width: "676px",
             height: "32px",
             ...newCss
         })}>
-        {
-            <tr css={css({
-                width: "676px",
-                height: "32px",
-            })}>
-                <th css={css({
-                    ...cssList.th,
-                    borderRadius: "4px 0px 0px 0px",
-                    width: "150px",
-                })}>Rank
-                </th>
-                <th css={css({
-                    ...cssList.th,
-                    width: "238px",
-                })}>Champion
-                </th>
-                <th css={css({
-                    ...cssList.th,
-                    width: "288px",
-                    borderRadius: "0px 4px 0px 0px",
-                })}>Win Rate
-                </th>
-            </tr>
-        }
-        </thead>
+            {
+                <div css={css({
+                    width: "676px",
+                    height: "32px",
+                })}>
+                    <div css={css({
+                        ...cssList.th,
+                        borderRadius: "4px 0px 0px 0px",
+                        width: "150px",
+                    })}>Rank
+                    </div>
+                    <div css={css({
+                        ...cssList.th,
+                        width: "238px",
+                    })}>Champion
+                    </div>
+                    <div css={css({
+                        ...cssList.th,
+                        width: "288px",
+                        borderRadius: "0px 4px 0px 0px",
+                    })}>Win Rate
+                    </div>
+                </div>
+            }
+        </div>
     )
 }

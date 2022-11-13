@@ -18,6 +18,7 @@ const imageList = {
     rightArrow: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/rightArrow.svg",
     upArrow: "https://lol-duo-bucket.s3.ap-northeast-2.amazonaws.com/mainPage/search/upArrow.svg",
     allChampion: "https://d2d4ci5rabfoyr.cloudfront.net/mainPage/champion/ALL.svg",
+    itemIcon: "https://d2d4ci5rabfoyr.cloudfront.net/detail/item/ItemArrow.svg",
 }
 
 export function SearchGlassIcon({newCss = {}}) {
@@ -53,4 +54,20 @@ export function SelectedChampionIcon({src, newCss = {}}) {
         borderRadius: "50%",
         ...newCss
     })} src={src} alt={src}/>
+}
+
+export function IconSIze24({src, newCss = {}}) {
+    return <img css={css({
+        width: "24px",
+        height: "24px",
+        ...newCss
+    })} src={src} alt={src}/>
+}
+
+export function ItemIcon({newCss = {}}) {
+    return <img css={css({
+        height: "6.84px",
+        width: "3.61px",
+        ...newCss
+    })} src={imageList.itemIcon} alt={imageList.itemIcon}/>
 }

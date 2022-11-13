@@ -6,6 +6,7 @@ import {MainFooter} from "../components/templates/Footer";
 import {DuoMainBody} from "../components/templates/DuoBody";
 import {css} from "@emotion/react";
 import {SoloDetailBody} from "../components/templates/SoloDetailBody";
+import {DuoDetailBody} from "../components/templates/DuoDetailBody";
 
 
 function App() {
@@ -24,7 +25,12 @@ function App() {
                 <Route path="/duo" element={<DuoMainBody newCss={{
                     paddingTop: "176px"
                 }}/>}/>
-                <Route path="/solo/detail" element={<SoloDetailBody/>}/>
+                <Route path="/solo/detail" element={<SoloDetailBody newCss={{
+                    paddingTop: "176px"
+                }}/>}/>
+                <Route path="/duo/detail" element={<DuoDetailBody newCss={{
+                    paddingTop: "176px"
+                }}/>}/>
             </Routes>
             <MainFooter></MainFooter>
         </div>

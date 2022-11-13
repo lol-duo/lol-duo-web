@@ -47,6 +47,14 @@ const fontList = {
                 lineHeight: "19.2px",
                 letterSpacing: "0.02em",
 
+            },
+            12: {
+                fontFamily: "Roboto",
+                fontSize: "12px",
+                fontWeight: "500",
+                lineHeight: "14.4px",
+                letterSpacing: "0.02em",
+                
             }
         }
     }

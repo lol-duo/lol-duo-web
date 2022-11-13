@@ -85,11 +85,11 @@ export function SoloMainBody({newCss = {}}) {
                 {
                     mainChampion.map((champion, index) => {
                         return (
-                            <Link to={{
+                            <Link key={index} to={{
                                 pathname: "/solo/detail",
                                 search: `${createSearchParams({id: mainChampion[index].id + ""})}`
                             }}>
-                                <SoloTable key={index} championInfo={champion}/>
+                                <SoloTable championInfo={champion}/>
                             </Link>
                         )
                     })
