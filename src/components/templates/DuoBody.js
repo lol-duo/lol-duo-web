@@ -7,6 +7,7 @@ import assets from "../../assets/assets";
 import {DuoTableHeader} from "../pattern/table/TableHeader";
 import {getDuoChampionListResultByApi} from "../../api/api";
 import {BigDuoTable, DuoTable} from "../pattern/table/DuoTable";
+import {createSearchParams, Link} from "react-router-dom";
 
 export function DuoMainBody({newCss = {}}) {
     const [userSelected, setUserSelected] = useState([{
@@ -131,19 +132,40 @@ export function DuoMainBody({newCss = {}}) {
                 {
                     mainChampion.length > 3 ?
                         <>
-                            <BigDuoTable rankInfo={mainChampion[0]}/>
+                            <Link to={{
+                                pathname: "/solo/detail",
+                                search: `${createSearchParams({id: mainChampion[0].id + ""})}`
+                            }}>
+                                <BigDuoTable rankInfo={mainChampion[0]}/>
+                            </Link>
                             <div css={css({
                                 display: "flex",
                                 flexDirection: "row",
                                 gap: "4px"
                             })}>
-                                <BigDuoTable rankInfo={mainChampion[1]}/>
-                                <BigDuoTable rankInfo={mainChampion[2]}/>
+                                <Link to={{
+                                    pathname: "/solo/detail",
+                                    search: `${createSearchParams({id: mainChampion[1].id + ""})}`
+                                }}>
+                                    <BigDuoTable rankInfo={mainChampion[1]}/>
+                                </Link>
+                                <Link to={{
+                                    pathname: "/solo/detail",
+                                    search: `${createSearchParams({id: mainChampion[2].id + ""})}`
+                                }}>
+                                    <BigDuoTable rankInfo={mainChampion[2]}/>
+                                </Link>
                             </div>
                             {
                                 mainChampion.map((champion, index) => {
                                     if (index > 2) {
-                                        return <DuoTable key={index} rankInfo={champion}/>
+                                        return (
+                                            <Link to={{
+                                                pathname: "/solo/detail",
+                                                search: `${createSearchParams({id: mainChampion[index].id + ""})}`
+                                            }}>
+                                                <DuoTable key={index} rankInfo={champion}/>
+                                            </Link>)
                                     } else {
                                         return null;
                                     }
@@ -153,7 +175,12 @@ export function DuoMainBody({newCss = {}}) {
                         :
                         mainChampion.map((champion, index) => {
                             return (
-                                <DuoTable key={index} rankInfo={champion}/>
+                                <Link to={{
+                                    pathname: "/solo/detail",
+                                    search: `${createSearchParams({id: mainChampion[index].id + ""})}`
+                                }}>
+                                    <DuoTable key={index} rankInfo={champion}/>
+                                </Link>
                             )
                         })
                 }

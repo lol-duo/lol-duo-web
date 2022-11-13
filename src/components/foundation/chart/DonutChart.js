@@ -11,7 +11,7 @@ export function DonutChart({color, percent, size}) {
                     r="90"
                     fill="none"
                     stroke="#ebebeb"
-                    strokeWidth="10"
+                    strokeWidth="12.6"
                 />
                 <AnimatedCircle
                     cx="100"
@@ -19,7 +19,7 @@ export function DonutChart({color, percent, size}) {
                     r="90"
                     fill="none"
                     stroke={color}
-                    strokeWidth="10"
+                    strokeWidth="12.8"
                     strokeDasharray={`${2 * Math.PI * 90 * percent} ${
                         2 * Math.PI * 90 * (1 - percent)
                     }`}
