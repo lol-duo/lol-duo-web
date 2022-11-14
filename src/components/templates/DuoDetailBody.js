@@ -97,7 +97,7 @@ export function DuoDetailBody({newCss = {}}) {
                     })}>
                         <DuoTable newCss={{width: "413px"}} detailInfo={detailDuo.detailInfo1}/>
                         <DetailRank detailRankWinRate={detailDuo.detailRankWinRate}/>
-                        <DuoTable newCss={{width: "413px"}} detailInfo={detailDuo.detailInfo1}/>
+                        <DuoTable newCss={{width: "413px"}} detailInfo={detailDuo.detailInfo2}/>
                     </div>
                 )
             })}
