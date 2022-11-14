@@ -20,16 +20,20 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to="/duo"/>}/>
                 <Route path="/solo" element={<SoloMainBody newCss={{
-                    paddingTop: "176px"
+                    paddingTop: "176px",
+                    minHeight: "1200px",
                 }}/>}/>
                 <Route path="/duo" element={<DuoMainBody newCss={{
-                    paddingTop: "176px"
+                    paddingTop: "176px",
+                    minHeight: "1200px",
                 }}/>}/>
                 <Route path="/solo/detail" element={<SoloDetailBody newCss={{
-                    paddingTop: "176px"
+                    paddingTop: "176px",
+                    minHeight: "1200px",
                 }}/>}/>
                 <Route path="/duo/detail" element={<DuoDetailBody newCss={{
-                    paddingTop: "176px"
+                    paddingTop: "176px",
+                    minHeight: "1200px",
                 }}/>}/>
             </Routes>
             <MainFooter></MainFooter>

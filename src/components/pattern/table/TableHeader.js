@@ -49,6 +49,8 @@ export function SoloTableHeader({newCss = {}}) {
         })}>
             {
                 <div css={css({
+                    display: "flex",
+                    flexDirection: "row",
                     width: "676px",
                     height: "32px",
                 })}>
@@ -60,7 +62,7 @@ export function SoloTableHeader({newCss = {}}) {
                     </div>
                     <div css={css({
                         ...cssList.th,
-                        width: "238px",
+                        width: "210px",
                     })}>Champion
                     </div>
                     <div css={css({

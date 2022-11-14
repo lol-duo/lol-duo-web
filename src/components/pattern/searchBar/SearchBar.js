@@ -5,7 +5,7 @@ import {css} from "@emotion/react";
 import {SearchBarPositionCircle} from "../../foundation/icon1/position_icon/SearchBarPositionCircle";
 import colorList from "../../../assets/colorList";
 import assets from "../../../assets/assets";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import fontList from "../../../assets/fontList";
 import {ArrowIcon, SelectedChampionIcon} from "../../foundation/icon1/default/Icon";
 import {SearchBarPosition} from "../../atoms/table_atoms/SearchBarPosition";
@@ -49,9 +49,15 @@ const cssList = {
 }
 
 
-export function SearchBar({newCss = {}, setMainChampion, setMainPosition}) {
+export function SearchBar({newCss = {}, setMainChampion, setMainPosition, resetFocus = false}) {
 
     const [focus, setFocus] = useState([false, false]);
+
+    useEffect(() => {
+        if (resetFocus) {
+            setFocus([false, false]);
+        }
+    }, [resetFocus])
 
     const [userSearch, setUserSearch] = useState({
         "position": assets.position.all, "champion": {

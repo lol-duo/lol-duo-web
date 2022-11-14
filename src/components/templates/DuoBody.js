@@ -2,14 +2,78 @@
 
 import {css} from "@emotion/react";
 import {SearchBar} from "../pattern/searchBar/SearchBar";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import assets from "../../assets/assets";
 import {DuoTableHeader} from "../pattern/table/TableHeader";
 import {getDuoChampionListResultByApi} from "../../api/api";
 import {BigDuoTable, DuoTable} from "../pattern/table/DuoTable";
 import {createSearchParams, Link} from "react-router-dom";
+import fontList from "../../assets/fontList";
+import colorList from "../../assets/colorList";
+
+function useOutsideClick1(ref, setFirstFocus) {
+    useEffect(() => {
+
+        function handleClickOutside(event) {
+
+            // 현재 document에서 mousedown 이벤트가 동작하면 호출되는 함수입니다.
+            if (ref.current && !ref.current.contains(event.target)) {
+                setFirstFocus(true);
+            } else {
+                setFirstFocus(false);
+            }
+        }
+
+        // 현재 document에 이벤트리스너를 추가합니다.
+        document.addEventListener("mousedown", handleClickOutside);
+
+        // useEffect 함수가 return하는 것은 마운트 해제하는 것과 동일합니다.
+        // 즉, Class 컴포넌트의 componentWillUnmount 생명주기와 동일합니다.
+        // 더 이상'mousedown'이벤트가 동작하더라도 handleClickOutside 함수가 실행되지 않습니다.
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref, setFirstFocus]); // ref가 변경되면 useEffect를 다시 생성합니다.
+}
+
+function useOutsideClick2(ref, setSecondFocus) {
+    useEffect(() => {
+
+        function handleClickOutside(event) {
+
+            // 현재 document에서 mousedown 이벤트가 동작하면 호출되는 함수입니다.
+            if (ref.current && !ref.current.contains(event.target)) {
+                setSecondFocus(true);
+            } else {
+                setSecondFocus(false);
+            }
+        }
+
+        // 현재 document에 이벤트리스너를 추가합니다.
+        document.addEventListener("mousedown", handleClickOutside);
+
+        // useEffect 함수가 return하는 것은 마운트 해제하는 것과 동일합니다.
+        // 즉, Class 컴포넌트의 componentWillUnmount 생명주기와 동일합니다.
+        // 더 이상'mousedown'이벤트가 동작하더라도 handleClickOutside 함수가 실행되지 않습니다.
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref, setSecondFocus]); // ref가 변경되면 useEffect를 다시 생성합니다.
+}
 
 export function DuoMainBody({newCss = {}}) {
+
+    const outsideRef1 = useRef(null);
+    const outsideRef2 = useRef(null);
+
+
+    const [firstFocus, setFirstFocus] = useState(false);
+    const [secondFocus, setSecondFocus] = useState(false);
+
+    useOutsideClick1(outsideRef1, setFirstFocus);
+    useOutsideClick2(outsideRef2, setSecondFocus);
+
+
     const [userSelected, setUserSelected] = useState([{
         "position": assets.position.all, "champion": {
             "id": 0,
@@ -110,13 +174,17 @@ export function DuoMainBody({newCss = {}}) {
                 display: "flex",
                 zIndex: "1000"
             })}>
-                <SearchBar newCss={{
-                    position: "relative",
-                }} setMainPosition={setPosition1} setMainChampion={setChampion1}/>
-                <SearchBar newCss={{
-                    position: "relative",
-                    left: "12px"
-                }} setMainPosition={setPosition2} setMainChampion={setChampion2}/>
+                <div ref={outsideRef1}>
+                    <SearchBar newCss={{
+                        position: "relative",
+                    }} setMainPosition={setPosition1} setMainChampion={setChampion1} resetFocus={firstFocus}/>
+                </div>
+                <div ref={outsideRef2}>
+                    <SearchBar newCss={{
+                        position: "relative",
+                        left: "12px"
+                    }} setMainPosition={setPosition2} setMainChampion={setChampion2} resetFocus={secondFocus}/>
+                </div>
             </div>
             <DuoTableHeader newCss={{
                 marginTop: "24px",
@@ -171,17 +239,26 @@ export function DuoMainBody({newCss = {}}) {
                                 })
                             }
                         </>
-                        :
-                        mainChampion.map((champion, index) => {
-                            return (
-                                <Link key={index} to={{
-                                    pathname: "/duo/detail",
-                                    search: `${createSearchParams({id: mainChampion[index].id + ""})}`
-                                }}>
-                                    <DuoTable rankInfo={champion}/>
-                                </Link>
-                            )
-                        })
+                        : mainChampion.length === 0 ?
+                            <div css={{
+                                height: "17px",
+                                width: "258px",
+                                ...fontList.roboto.regular["14"],
+                                color: colorList.grayscale["000"],
+                                position: "relative",
+                                top: "54px",
+                            }}>현재 포지션/챔피언의 데이터가 부족합니다.</div>
+                            :
+                            mainChampion.map((champion, index) => {
+                                return (
+                                    <Link key={index} to={{
+                                        pathname: "/duo/detail",
+                                        search: `${createSearchParams({id: mainChampion[index].id + ""})}`
+                                    }}>
+                                        <DuoTable rankInfo={champion}/>
+                                    </Link>
+                                )
+                            })
                 }
             </div>
         </div>
