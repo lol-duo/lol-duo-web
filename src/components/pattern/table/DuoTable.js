@@ -91,7 +91,12 @@ export function BigDuoTable({newCss = {}, rankInfo}) {
                     left: "4px",
                     top: "0px",
                 }}/>
-                <RankUpIcon newCss={{
+                <RankUpIcon newCss={rankInfo.rankChangeNumber === 0 ? {
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    bottom: "0px",
+                } : {
                     position: "absolute",
                     left: "0px",
                     bottom: "0px",
