@@ -78,7 +78,8 @@ function searchBar({championName, setChampionName, newCss = {}}) {
                     position: "absolute",
                     left: "16px",
                     top: "8px",
-                    ...cssList.searchBar.input
+                    ...cssList.searchBar.input,
+                    color: colorList.grayscale["100"],
                 })}
                 type="text"
                 value={championName}
@@ -162,7 +163,7 @@ export function SearchBarChampion({
                 }, champion, setChampion
             })}
             {searchBar({championName, setChampionName})}
-            <div css={cssList.searchBar.bottom}/>
+            <div css={css({...cssList.searchBar.bottom})}/>
 
         </div>
     )
