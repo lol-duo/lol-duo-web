@@ -182,6 +182,7 @@ export function SearchBar({newCss = {}, setMainChampion, setMainPosition, resetF
                     position: "absolute",
                     top: "84px",
                     left: "198px",
+                    filter: "drop-shadow(0px 4px 13px rgba(0, 0, 0, 0.32))",
                 }} champion={userSearch.champion.name} setChampion={setChampion}/>}
         </div>
     );
