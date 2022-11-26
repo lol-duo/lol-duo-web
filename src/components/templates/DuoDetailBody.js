@@ -91,8 +91,8 @@ export function DuoDetailBody({newCss = {}}) {
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        width: "960px",
-                        height: "360px",
+                        width: "964px",
+                        height: "364px",
                         gap: "4px",
                     })}>
                         <DuoTable newCss={{width: "413px"}} detailInfo={detailDuo.detailInfo1}/>

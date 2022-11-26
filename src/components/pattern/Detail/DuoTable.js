@@ -23,9 +23,9 @@ const cssList = {
         justifyContent: "center",
         backgroundColor: colorList.semantic.card,
         padding: "0px 12px",
-        gap: "32px",
+        gap: "48px",
         width: "437px",
-        height: "360px",
+        height: "364px",
     },
     spellAndItem: {
         ...display.row,
@@ -72,21 +72,21 @@ const cssList = {
         alignItems: "flex-start",
         padding: "0px 24px",
         gap: "24px",
-        width: "413px",
-        height: "194px",
+        width: "400px",
+        height: "198px",
     },
     runeIcon: {
         ...display.row,
         justifyContent: "center",
         gap: "32px",
-        width: "311px",
+        width: "352px",
         height: "160px",
     },
     runeIconMain: {
         background: {
             ...display.column,
             gap: "12px",
-            width: "159px",
+            width: "160px",
             height: "160px",
         },
         subRuneList: {
@@ -99,7 +99,6 @@ const cssList = {
             mainRune: {
                 ...display.row,
                 gap: "21px",
-                width: "159px",
                 height: "24px",
             },
             subRuneList: {
@@ -111,6 +110,7 @@ const cssList = {
             subRune: {
                 ...display.row,
                 alignItems: "flex-start",
+                justifyContent: "space-between",
                 gap: "24px",
                 width: "120px",
                 height: "24px",
@@ -216,6 +216,7 @@ export function DuoTable({newCss = {}, detailInfo}) {
                         })}>
                             <div css={css({
                                 ...cssList.runeIconMain.subRuneList.mainRune,
+                                width: detailInfo.detailRune.mainRuneList1.length === 3 ? "120px" : "159px",
                             })}>
                                 {detailInfo.detailRune.mainRuneList1.map((item, index) => {
                                     return (
