@@ -98,7 +98,7 @@ const cssList = {
             },
             mainRune: {
                 ...display.row,
-                gap: "21px",
+                justifyContent: "space-between",
                 height: "24px",
             },
             subRuneList: {
@@ -111,7 +111,6 @@ const cssList = {
                 ...display.row,
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                gap: "24px",
                 width: "120px",
                 height: "24px",
             }
@@ -121,7 +120,6 @@ const cssList = {
         background: {
             ...display.column,
             gap: "16px",
-
             width: "120px",
             height: "160px",
         },
@@ -135,7 +133,7 @@ const cssList = {
             },
             rune: {
                 ...display.row,
-                gap: "24px",
+                justifyContent: "space-between",
                 width: "120px",
                 height: "24px",
             }
