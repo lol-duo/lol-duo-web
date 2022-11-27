@@ -4,7 +4,7 @@ import colorList from "../../../assets/colorList";
 import {RankBadge} from "../../foundation/icon1/default/RankBadge";
 import fontList from "../../../assets/fontList";
 
-export function DetailRank({newCss = {}, detailRankWinRate}) {
+export function DetailRank({detailRankWinRate}) {
     return (
         <div css={css({
             display: "flex",
@@ -13,7 +13,7 @@ export function DetailRank({newCss = {}, detailRankWinRate}) {
             justifyContent: "center",
             backgroundColor: colorList.semantic.card,
             width: "82px",
-            height: "360px",
+            height: "364px",
             gap: "8px",
         })}>
             <RankBadge rank={detailRankWinRate.rankNumber}/>

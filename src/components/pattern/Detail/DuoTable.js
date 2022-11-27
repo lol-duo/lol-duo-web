@@ -31,8 +31,8 @@ const cssList = {
         ...display.row,
         justifyContent: "space-between",
         alignItems: "flex-start",
+        boxSizing: "border-box",
         padding: "0px 24px",
-        gap: "16px",
         width: "413px",
         height: "54px",
     },
@@ -70,7 +70,6 @@ const cssList = {
     rune: {
         ...display.column,
         alignItems: "flex-start",
-        padding: "0px 24px",
         gap: "24px",
         width: "400px",
         height: "198px",
@@ -195,8 +194,10 @@ export function DuoTable({newCss = {}, detailInfo}) {
                 ...cssList.rune,
             })}>
                 <div css={css({
-                    width: "28p",
+                    width: "35p",
                     height: "14px",
+                    left: "24px",
+                    position: "relative",
                     ...fontList.roboto.regular["12"],
                     color: colorList.grayscale["200"],
                 })}>
