@@ -4,7 +4,7 @@ import colorList from "../../../assets/colorList";
 import {RankBadge} from "../../foundation/icon1/default/RankBadge";
 import fontList from "../../../assets/fontList";
 
-export function DetailRank({detailRankWinRate}) {
+export function DetailRank({newCss = {}, detailRankWinRate}) {
     return (
         <div css={css({
             display: "flex",
@@ -15,6 +15,7 @@ export function DetailRank({detailRankWinRate}) {
             width: "82px",
             height: "364px",
             gap: "8px",
+            ...newCss,
         })}>
             <RankBadge rank={detailRankWinRate.rankNumber}/>
             <div css={css({

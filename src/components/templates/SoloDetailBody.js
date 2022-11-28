@@ -34,6 +34,7 @@ export function SoloDetailBody({newCss = {}}) {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                padding: "0px",
                 gap: "4px",
                 ...newCss
             })}>
@@ -41,7 +42,6 @@ export function SoloDetailBody({newCss = {}}) {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                top: "16px",
                 backgroundColor: colorList.semantic.card,
                 width: "960px",
                 height: "110px",
@@ -64,8 +64,8 @@ export function SoloDetailBody({newCss = {}}) {
                         height: "360px",
                         gap: "4px",
                     })}>
-                        <DetailRank detailRankWinRate={detailSolo.detailRankWinRate}/>
-                        <DuoTable newCss={{width: "874px"}} detailInfo={detailSolo.detailInfo}/>
+                        <DetailRank newCss={{height: "360px"}} detailRankWinRate={detailSolo.detailRankWinRate}/>
+                        <DuoTable newCss={{width: "874px", height: "360px"}} detailInfo={detailSolo.detailInfo}/>
                     </div>
                 )
             })}
