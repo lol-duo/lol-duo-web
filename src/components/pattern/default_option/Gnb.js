@@ -42,16 +42,20 @@ const cssList = {
 
 export function GnbLogo({newCss = {}}) {
     return (
+
         <div css={css({
             ...cssList.logo,
             ...newCss
         })}>
-            <Logo status={"Light"} newCss={{
-                position: "relative",
-                left: "0px",
-                top: "12px",
-            }}/>
+            <NavLink to={"/"}>
+                <Logo status={"Light"} newCss={{
+                    position: "relative",
+                    left: "0px",
+                    top: "12px",
+                }}/>
+            </NavLink>
         </div>
+
     );
 }
 
