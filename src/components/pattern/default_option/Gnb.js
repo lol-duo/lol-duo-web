@@ -55,7 +55,6 @@ export function GnbLogo({newCss = {}}) {
                 }}/>
             </NavLink>
         </div>
-
     );
 }
 

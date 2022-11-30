@@ -15,6 +15,14 @@ const cssList = {
             width: "64px",
             height: "64px",
             borderRadius: "50%",
+        },
+        smallImg: {
+            width: "44px",
+            height: "44px",
+        },
+        bigImg: {
+            width: "72px",
+            height: "72px",
         }
     },
     rune: {
@@ -103,12 +111,18 @@ const newCssList = {
 
 function ChampionImage({src, size, newCss = {}}) {
     let championCss = size === "small" ? cssList.champion.small : cssList.champion.big;
-    return <img css={
+    let championImgCss = size === "small" ? cssList.champion.smallImg : cssList.champion.bigImg;
+    return <div css={
         css({
             ...championCss,
+            overflow: "hidden",
             ...newCss
         })
-    } src={src} alt={src}/>;
+    }>
+        <img css={css({
+            ...championImgCss,
+        })} src={src} alt={src}/>
+    </div>;
 }
 
 function RuneImage({src, newCss = {}}) {
