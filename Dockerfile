@@ -1,18 +1,19 @@
-FROM node:19-alpine
+# Step 1: Build the React app
+FROM node:19 as build
 
-# Create app directory
 WORKDIR /app
 
-# Install app dependencies
-COPY package*.json .
-
+COPY package*.json ./
 RUN npm install
 
-# Bundle app source
 COPY . .
 
-# Expose port 3000
-EXPOSE 3000
+RUN npm run build
 
-# Run the app
-CMD [ "npm", "start" ]
+FROM nginx:alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
