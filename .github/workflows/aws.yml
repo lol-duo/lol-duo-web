@@ -4,14 +4,17 @@ on:
     branches: [ "main" ]
 
 env:
-  ECR_REPOSITORY: lol-duo-images
+  ECR_REPOSITORY: lol-duo
+  ECR_REGISTRY: public.ecr.aws/x6k4k7p6
+  TAG: front-${{ github.sha }}
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout source code.
-        uses: actions/checkout@master
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -22,14 +25,38 @@ jobs:
 
       - name: Build and tag Docker image
         env:
-          ECR_REGISTRY: public.ecr.aws/x6k4k7p6
+          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          TAG: ${{ env.TAG }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$TAG .
+
       - name: Push Docker image to Amazon ECR
         env:
-          ECR_REGISTRY: public.ecr.aws/x6k4k7p6
+          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          TAG: ${{ env.TAG }}
         run: |
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x6k4k7p6
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$TAG
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: lol-duo/k8s
+          token: ${{ secrets.IMYGNAM_GITHUB_TOKEN }}
+
+      - name: Update tag in values.yaml
+        env:
+          NEW_TAG: ${{ env.TAG }}
+        run: |
+          sed -i "s%tag: .*%tag: $NEW_TAG%" ./lol-duo-front/values.yaml
+
+      - name: Commit changes to values.yaml
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@github.com"
+          git add .
+          git commit -m "Update tag in values.yaml" --author "github-actions[bot] <github-actions[bot]@github.com>"
+          git push origin main
+      
