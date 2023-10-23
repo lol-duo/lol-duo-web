@@ -2,6 +2,7 @@ import styled, {keyframes} from "styled-components";
 import colorList from "../../../assets/colorList";
 
 export function DonutChart({color, percent, size}) {
+    percent = "0." + percent[0] + percent[1] + percent[3] + percent[4];
     return (
         <Chart size={size}>
             <AniSvg viewBox="0 0 200 200">
