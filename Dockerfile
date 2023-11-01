@@ -10,10 +10,15 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:alpine
+# Step 2: Run the React app
+FROM node:14
 
-COPY --from=build /app/build /usr/share/nginx/html
+WORKDIR /app
+
+COPY --from=build /app/build /app/build
+COPY package*.json ./
+RUN npm install
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
