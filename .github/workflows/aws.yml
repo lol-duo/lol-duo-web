@@ -7,6 +7,10 @@ env:
   ECR_REPOSITORY: lol-duo
   ECR_REGISTRY: public.ecr.aws/x6k4k7p6
   TAG: front-${{ github.sha }}
+  TASK_DEFINITION: LOL-DUO-Front-Task
+  CONTAINER_NAME: lol-duo-front-container
+  SERVICE_NAME: LOL-DUO-Front-Service
+  CLUSTER_NAME: LOL-DUO-ECS-Cluster
 
 jobs:
   build-and-push:
@@ -40,23 +44,25 @@ jobs:
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$TAG
 
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Download Task Definition Template
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.TASK_DEFINITION }} \
+            --query taskDefinition \
+            > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          repository: lol-duo/k8s
-          token: ${{ secrets.IMYGNAM_GITHUB_TOKEN }}
+          task-definition: task-definition.json
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.TAG }}
 
-      - name: Update tag in values.yaml
-        env:
-          NEW_TAG: ${{ env.TAG }}
-        run: |
-          sed -i "s%tag: .*%tag: $NEW_TAG%" ./lol-duo-front/values.yaml
-
-      - name: Commit changes to values.yaml
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@github.com"
-          git add .
-          git commit -m "Update tag in values.yaml" --author "github-actions[bot] <github-actions[bot]@github.com>"
-          git push origin main
-      
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.SERVICE_NAME }}
+          cluster: ${{ env.CLUSTER_NAME }}
+          wait-for-service-stability: true
