@@ -12,5 +12,4 @@ RUN npm run build
 
 EXPOSE 80
 
-RUN npm install -g serve
-CMD ["serve", "-s", "build", "-p", "80"]
+CMD ["npm", "start"]
